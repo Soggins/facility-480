@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>microsoft</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon-/-social-/-microsoft" transform="translate(-1.000000, -1.000000)" fill-rule="nonzero">
+            <g id="microsoft" transform="translate(1.000000, 1.000000)">
+                <path d="M11.6875,10.3125 L22,10.3125 L22,0.6875 C22,0.308 21.692,0 21.3125,0 L11.6875,0 L11.6875,10.3125 Z" id="Path" fill="#4CAF50"></path>
+                <path d="M10.3125,10.3125 L10.3125,0 L0.6875,0 C0.308,0 0,0.308 0,0.6875 L0,10.3125 L10.3125,10.3125 Z" id="Path" fill="#F44336"></path>
+                <path d="M10.3125,11.6875 L0,11.6875 L0,21.3125 C0,21.692 0.308,22 0.6875,22 L10.3125,22 L10.3125,11.6875 Z" id="Path" fill="#2196F3"></path>
+                <path d="M11.6875,11.6875 L11.6875,22 L21.3125,22 C21.692,22 22,21.692 22,21.3125 L22,11.6875 L11.6875,11.6875 Z" id="Path" fill="#FFC107"></path>
+            </g>
+        </g>
+    </g>
+</svg>
