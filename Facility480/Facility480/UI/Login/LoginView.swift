@@ -57,10 +57,10 @@ struct LoginView: View {
                             
                     }
                     .padding(.vertical)
-                      
-                    Button{
-                        
-                    } label: {
+                    
+                    NavigationLink(isActive: $viewModel.isLoggedIn, destination:{
+                        HomeView().navigationBarHidden(true)
+                    }, label: {
                         ZStack {
                             Rectangle()
                                 .frame(width: 300, height: 40)
@@ -71,70 +71,72 @@ struct LoginView: View {
                                 .bold()
                                 .foregroundColor(.gray)
                         }
-                    }
+                    })
                     
-                    HStack {
-                        Rectangle()
-                            .frame(width: UIScreen.main.bounds.width * 0.2, height: 1)
-                            .foregroundColor(.gray)
-                            .padding(.horizontal)
-                        
-                        Text("o iniciar sesión en")
-                            .font(.caption)
-                            .foregroundColor(.gray)
+                    Group {
+                        HStack {
+                            Rectangle()
+                                .frame(width: UIScreen.main.bounds.width * 0.2, height: 1)
+                                .foregroundColor(.gray)
+                                .padding(.horizontal)
                             
-                        
-                        Rectangle()
-                            .frame(width: UIScreen.main.bounds.width * 0.2, height: 1)
-                            .foregroundColor(.gray)
-                            .padding(.horizontal)
-                    }
-                    .padding()
-                    
-                    HStack {
-                        
-                        Button {
+                            Text("o iniciar sesión en")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                                
                             
-                        } label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(.gray, lineWidth: 2)
-                                    
-                                    
-                                HStack {
-                                    Image("googleicon")
-                                        .padding(.leading, 2)
-                                    Text("Google")
-                                        .bold()
-                                        .font(.system(size: 16))
-                                        .padding(.horizontal, 10)
-                                        .foregroundColor(.gray)
-                                }
-                                    
-                            }
-                            .frame(width: UIScreen.main.bounds.width * 0.35, height: 40)
+                            Rectangle()
+                                .frame(width: UIScreen.main.bounds.width * 0.2, height: 1)
+                                .foregroundColor(.gray)
+                                .padding(.horizontal)
                         }
+                        .padding()
                         
-                        Button {
+                        HStack {
                             
-                        } label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(.gray, lineWidth: 2)
-                                    
-                                    
-                                HStack {
-                                    Image("microsofticon")
-                                        .padding(.leading, 2)
-                                    Text("Microsoft")
-                                        .bold()
-                                        .font(.system(size: 16))
-                                        .padding(.horizontal, 10)
-                                        .foregroundColor(.gray)
+                            Button {
+                                
+                            } label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(.gray, lineWidth: 2)
+                                        
+                                        
+                                    HStack {
+                                        Image("googleicon")
+                                            .padding(.leading, 2)
+                                        Text("Google")
+                                            .bold()
+                                            .font(.system(size: 16))
+                                            .padding(.horizontal, 10)
+                                            .foregroundColor(.gray)
+                                    }
+                                        
                                 }
-                                    
+                                .frame(width: UIScreen.main.bounds.width * 0.35, height: 40)
                             }
-                            .frame(width: UIScreen.main.bounds.width * 0.35, height: 40)
+                            
+                            Button {
+                                
+                            } label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(.gray, lineWidth: 2)
+                                        
+                                        
+                                    HStack {
+                                        Image("microsofticon")
+                                            .padding(.leading, 2)
+                                        Text("Microsoft")
+                                            .bold()
+                                            .font(.system(size: 16))
+                                            .padding(.horizontal, 10)
+                                            .foregroundColor(.gray)
+                                    }
+                                        
+                                }
+                                .frame(width: UIScreen.main.bounds.width * 0.35, height: 40)
+                            }
                         }
                     }
                     
@@ -146,7 +148,6 @@ struct LoginView: View {
                     }
                     .font(.caption)
                     .padding()
-                    
                     
                     Spacer()
                 }

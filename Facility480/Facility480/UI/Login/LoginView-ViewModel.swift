@@ -12,5 +12,7 @@ extension LoginView {
         @Published var email = ""
         @Published var pass = ""
         @Published var recordar: Bool = false
+        
+        @Published var isLoggedIn: Bool = false
     }
 }
