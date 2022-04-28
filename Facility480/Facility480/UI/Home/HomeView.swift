@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = ViewModel()
     
-    
     var body: some View {
         NavigationView{
             ZStack {
@@ -22,17 +21,21 @@ struct HomeView: View {
                             
                         
                         VStack {
-                            HStack {
-                                Text("Localización")
+                            HStack(spacing: 0) {
+                                Image(systemName: "mappin")
                                     .foregroundColor(.white)
-                                    .padding(.top, UIScreen.main.bounds.height * 0.1)
-                                    .padding(.horizontal, UIScreen.main.bounds.width * 0.07)
-                                    .padding(.bottom, UIScreen.main.bounds.height * 0.01)
-                                    
-                                    
-                                
+                                Group {
+                                    Text("Castellón de la Plana,")
+                                        .fontWeight(.bold)
+                                    Text("ES")
+                                }
+                                    .foregroundColor(.white)
+
                                 Spacer()
                             }
+                            .padding(.top, UIScreen.main.bounds.height * 0.1)
+                            .padding(.horizontal, UIScreen.main.bounds.width * 0.07)
+                            .padding(.bottom, UIScreen.main.bounds.height * 0.01)
                             
                             Text("¿Qué tipo de espacio quieres reservar?")
                                 .foregroundColor(.white)
@@ -54,24 +57,14 @@ struct HomeView: View {
                             }
                             .padding(.bottom, UIScreen.main.bounds.height * 0.015)
                             
-                            ScrollView(.horizontal) {
+                            Spacer()
+                            
+                            ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 20) {
-                                    ForEach(0..<10) { _ in
-                                        
-                                        VStack {
-                                            ZStack {
-                                                RoundedRectangle(cornerRadius: 25, style: .continuous)
-                                                    .frame(width: UIScreen.main.bounds.width * 0.17, height: UIScreen.main.bounds.height * 0.09)
-                                                    .foregroundColor(.green)
-                                                
-                                                Image(systemName: "car")
-                                            }
-                                            
-                                            Text("Vehicle")
-                                                .foregroundColor(.white)
-                                        }
-                                        .padding(.top)
-                                        .padding(.leading, UIScreen.main.bounds.width * 0.075)
+                                    ForEach(0..<10) { number in
+                                        ReservationItemImage(facilityName: "Vehicle")
+                                            .padding(.leading, UIScreen.main.bounds.width * 0.075)
+                                            .padding(.trailing, number == 9 ? UIScreen.main.bounds.width * 0.075 : 0)
                                     }
                                 }
                             }
@@ -96,7 +89,7 @@ struct HomeView: View {
                                 Text("Ver todas")
                                     .foregroundColor(.black)
                             }
-                            .frame(width: UIScreen.main.bounds.width * 0.26, height: UIScreen.main.bounds.height * 0.03)
+                            .frame(width: UIScreen.main.bounds.width * 0.26, height: UIScreen.main.bounds.height * 0.04)
                         }
                     }
                     .padding()
@@ -133,7 +126,20 @@ struct HomeView: View {
                     }
                     .frame(width: UIScreen.main.bounds.width * 0.915, height: UIScreen.main.bounds.height * 0.101)
                     
-                    Spacer()
+                    ScrollView{
+                        VStack(spacing: 20) {
+                            ForEach(0..<5) { number in
+                                ReservationItem()
+                                    .padding(.horizontal)
+                                    .padding(.top, number == 0 ? UIScreen.main.bounds.height * 0.02 : 0)
+                                    .padding(.bottom, number == 4 ? UIScreen.main.bounds.height * 0.02 : 0)
+                            }
+                        }
+                    
+                    }
+                    .padding(.top, 10)
+                    
+                    
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar{
@@ -142,7 +148,7 @@ struct HomeView: View {
                             .padding(.horizontal)
                     }
                     ToolbarItemGroup(placement: .navigationBarTrailing){
-                        Image(systemName: "bell")
+                        Image(systemName: "bell.fill")
                             
                         Circle()
                             .fill()

@@ -7,8 +7,7 @@
 
 import Foundation
 
-extension HomeView {
-    @MainActor class ViewModel: ObservableObject {
-        @Published var searchbar = ""
-    }
+class ViewModel: ObservableObject {
+    @Published var searchbar = ""
 }
+

@@ -14,6 +14,8 @@
 		1295F6202810050900B37F0D /* LoginView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1295F61F2810050900B37F0D /* LoginView-ViewModel.swift */; };
 		1295F62328100C6200B37F0D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1295F62228100C6200B37F0D /* HomeView.swift */; };
 		129FB043281697A900CAF6DB /* HomeView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FB042281697A900CAF6DB /* HomeView-ViewModel.swift */; };
+		12BA6B45281958CF00D44482 /* ReservationItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA6B44281958CF00D44482 /* ReservationItemImage.swift */; };
+		12BA6B4728195E5200D44482 /* ReservationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA6B4628195E5200D44482 /* ReservationItem.swift */; };
 		12C3A5B1280439F1002EBEF3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C3A5B0280439F1002EBEF3 /* LoginView.swift */; };
 		F605EA986C76F1C7E3EC4360 /* Pods_Facility480.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF7370D7084BA0F969C75CE /* Pods_Facility480.framework */; };
 /* End PBXBuildFile section */
@@ -27,6 +29,8 @@
 		1295F61F2810050900B37F0D /* LoginView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView-ViewModel.swift"; sourceTree = "<group>"; };
 		1295F62228100C6200B37F0D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		129FB042281697A900CAF6DB /* HomeView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView-ViewModel.swift"; sourceTree = "<group>"; };
+		12BA6B44281958CF00D44482 /* ReservationItemImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationItemImage.swift; sourceTree = "<group>"; };
+		12BA6B4628195E5200D44482 /* ReservationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationItem.swift; sourceTree = "<group>"; };
 		12C3A5B0280439F1002EBEF3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		29237BDEE09DFCCDD85AFE52 /* Pods-Facility480.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facility480.release.xcconfig"; path = "Target Support Files/Pods-Facility480/Pods-Facility480.release.xcconfig"; sourceTree = "<group>"; };
 		3C1456A69F429263F8C617AE /* Pods-Facility480.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facility480.debug.xcconfig"; path = "Target Support Files/Pods-Facility480/Pods-Facility480.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,10 +98,20 @@
 		1295F62128100C5300B37F0D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				12BA6B432819585A00D44482 /* Components */,
 				1295F62228100C6200B37F0D /* HomeView.swift */,
 				129FB042281697A900CAF6DB /* HomeView-ViewModel.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		12BA6B432819585A00D44482 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				12BA6B44281958CF00D44482 /* ReservationItemImage.swift */,
+				12BA6B4628195E5200D44482 /* ReservationItem.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		12C3A5AF280439B1002EBEF3 /* UI */ = {
@@ -242,10 +256,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				12C3A5B1280439F1002EBEF3 /* LoginView.swift in Sources */,
+				12BA6B4728195E5200D44482 /* ReservationItem.swift in Sources */,
 				1295F6202810050900B37F0D /* LoginView-ViewModel.swift in Sources */,
 				129FB043281697A900CAF6DB /* HomeView-ViewModel.swift in Sources */,
 				1206E9A928042A1C0096C29C /* ContentView.swift in Sources */,
 				1295F62328100C6200B37F0D /* HomeView.swift in Sources */,
+				12BA6B45281958CF00D44482 /* ReservationItemImage.swift in Sources */,
 				1206E9A728042A1C0096C29C /* Facility480App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
