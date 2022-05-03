@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {
         NavigationView{
@@ -62,9 +62,12 @@ struct HomeView: View {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 20) {
                                     ForEach(0..<10) { number in
+                                        Button {
+                                        } label: {
                                         ReservationItemImage(facilityName: "Vehicle")
                                             .padding(.leading, UIScreen.main.bounds.width * 0.075)
                                             .padding(.trailing, number == 9 ? UIScreen.main.bounds.width * 0.075 : 0)
+                                        }
                                     }
                                 }
                             }
@@ -80,17 +83,19 @@ struct HomeView: View {
                         
                         Spacer()
                         
-                        Button {
-                        } label: {
+                        NavigationLink(isActive: $viewModel.toAllReservations, destination:{
+                            MyReservationsView().ignoresSafeArea()
+                        }, label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 25, style: .continuous)
                                     .foregroundColor(.green)
+                                
                                 
                                 Text("Ver todas")
                                     .foregroundColor(.black)
                             }
                             .frame(width: UIScreen.main.bounds.width * 0.26, height: UIScreen.main.bounds.height * 0.04)
-                        }
+                        })
                     }
                     .padding()
                     

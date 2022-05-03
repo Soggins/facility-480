@@ -7,7 +7,10 @@
 
 import Foundation
 
-class ViewModel: ObservableObject {
-    @Published var searchbar = ""
+class HomeViewModel: ObservableObject {
+        @Published var searchbar = ""
+        
+        @Published var toAllReservations: Bool = false
 }
+
 

@@ -9,8 +9,12 @@ import SwiftUI
 
 struct ReservationItem: View {
     var body: some View {
+        
         GeometryReader { geometry in
             HStack(alignment: .center) {
+                Button {
+                    
+                } label: {
                 ReservationItemImage()
                 VStack(alignment: .leading) {
                     Text("Puesto de trabajo 45")
@@ -31,7 +35,8 @@ struct ReservationItem: View {
                     .padding(.bottom, 15)
                 
                 Spacer()
-                
+                }
+                .foregroundColor(.black)
                 Menu{
                     Button("Cancel", action: cancel)
                 } label: {
@@ -39,6 +44,8 @@ struct ReservationItem: View {
                     .rotationEffect(.degrees(90))
                     .foregroundColor(.black.opacity(0.2))
                 }
+                .frame(width: geometry.size.width * 0.1, height: geometry.size.height * 0.75)
+                
 
             }
             
