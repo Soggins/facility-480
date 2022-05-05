@@ -22,42 +22,66 @@ enum MyReservationsTabEnum: Hashable, CaseIterable{
             return "HISTÓRICO"
         }
     }
-    
-    
-    
 }
-
-
 
 struct MyReservationsView: View {
     @StateObject private var viewModel = MyReservationsViewModel()
     
     @State private var selectedTab: MyReservationsTabEnum = .current
+    
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
     var body: some View {
-        NavigationView {
-            GeometryReader{ geo in
-                ZStack {
-                    VStack(spacing: 0) {
-                        
-                        MyReservationsTopBarView(geoWidth: geo.size.width, selectedTab: $selectedTab)
-                        
-                        TabView(selection: $selectedTab,
-                            content: {
-                                Text("1")
-                                .tag(MyReservationsTabEnum.current)
-                                Text("2")
-                                .tag(MyReservationsTabEnum.history)
-                            })
-                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                        
-                        
+            ZStack {
                 
+                VStack(spacing: 0) {
+                    
+                    MyReservationsTopBarView(geoWidth: UIScreen.main.bounds.width, selectedTab: $selectedTab)
+                        
+                    
+                    TabView(selection: $selectedTab,
+                        content: {
+                            Text("1")
+                            .tag(MyReservationsTabEnum.current)
+                            Text("2")
+                            .tag(MyReservationsTabEnum.history)
+                        })
+                    .frame(width: UIScreen.main.bounds.width * 0.95)
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                   
+            
+                }
+                .padding(.top, UIScreen.main.bounds.height * 0.12)
+                .toolbar{
+                    ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarLeading){
+                        Button(action: { self.mode.wrappedValue.dismiss() }) {
+                            HStack{
+                                Image(systemName: "arrow.left")
+                                Text("Mis reservas")
+                            }
+                            .foregroundColor(.black)
+                        }
+                    }
+                    ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarTrailing){
+                        HStack {
+                            Button{
+                            } label: {
+                            Image(systemName: "slider.vertical.3")
+                            }
+                            .padding(.trailing, 15)
+                            
+                            Button {
+                            } label: {
+                                Image(systemName: "magnifyingglass")
+                            }
+                        }
+                        .foregroundColor(.black)
+                        
                     }
                 }
-//                .ignoresSafeArea()
             }
-        }
+            
+        
     }
 }
 

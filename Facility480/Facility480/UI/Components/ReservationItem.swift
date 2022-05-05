@@ -43,8 +43,9 @@ struct ReservationItem: View {
                 Image(systemName: "ellipsis")
                     .rotationEffect(.degrees(90))
                     .foregroundColor(.black.opacity(0.2))
+                    .frame(width: geometry.size.width * 0.1, height: geometry.size.height * 0.75)
                 }
-                .frame(width: geometry.size.width * 0.1, height: geometry.size.height * 0.75)
+                
                 
 
             }

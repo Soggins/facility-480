@@ -84,7 +84,9 @@ struct HomeView: View {
                         Spacer()
                         
                         NavigationLink(isActive: $viewModel.toAllReservations, destination:{
-                            MyReservationsView().ignoresSafeArea()
+                            MyReservationsView()
+                                .ignoresSafeArea()
+                                .navigationBarBackButtonHidden(true)
                         }, label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 25, style: .continuous)
