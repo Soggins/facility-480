@@ -30,6 +30,14 @@ struct MyReservationsView: View {
     @State private var selectedTab: MyReservationsTabEnum = .current
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
+    ///
+    ///
+    ///
+    
+    ///
+    ///
+    ///
 
     var body: some View {
             ZStack {
@@ -41,12 +49,11 @@ struct MyReservationsView: View {
                     
                     TabView(selection: $selectedTab,
                         content: {
-                            Text("1")
+                            MyReservationsTab_Current()
                             .tag(MyReservationsTabEnum.current)
-                            Text("2")
+                            MyReservationsTab_History()
                             .tag(MyReservationsTabEnum.history)
                         })
-                    .frame(width: UIScreen.main.bounds.width * 0.95)
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                    
             

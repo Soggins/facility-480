@@ -9,9 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @State private var showDetail = false
+    let reservation = Reservation(name: "Puesto de trabajo 45", time: "Lunes 31 may. | 8:00 a 17:30", price: 2)
+    
     
     var body: some View {
-        NavigationView{
+        
             ZStack {
                 VStack {
                     ZStack {
@@ -64,7 +67,7 @@ struct HomeView: View {
                                     ForEach(0..<10) { number in
                                         Button {
                                         } label: {
-                                        ReservationItemImage(facilityName: "Vehicle")
+                                        ReservationItemButton(facilityName: "Vehicle")
                                             .padding(.leading, UIScreen.main.bounds.width * 0.075)
                                             .padding(.trailing, number == 9 ? UIScreen.main.bounds.width * 0.075 : 0)
                                         }
@@ -101,60 +104,55 @@ struct HomeView: View {
                     }
                     .padding()
                     
-                    
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 15, style: .continuous)
-                            .foregroundColor(.gray.opacity(0.2))
-                        
-                        VStack{
-                            HStack {
-                                VStack {
-                                    Text("Próxima reserva en 0d 3h 29m")
-                                        .fontWeight(.bold)
-                                    Text("12:30 Sala puerta de Tanhäusen")
-                                }
-                                Spacer()
-                                
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                        .foregroundColor(.black)
-                                    Image(systemName: "arrow.right")
-                                        .foregroundColor(.green)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.height * 0.05)
-                            }
+                    NavigationLink(isActive: $showDetail, destination:{
+                        ReservationDetailsView(reservation: reservation)
+                            .ignoresSafeArea()
+                            .navigationBarBackButtonHidden(true)
+                    }, label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .foregroundColor(.gray.opacity(0.2))
                             
-                            ProgressView(value: 75, total: 100)
-                                    .accentColor(Color.green)
-                                    .scaleEffect(x: 1, y: 1.25, anchor: .center)
-                                    .frame(width: UIScreen.main.bounds.width * 0.8)
-                        }
-                        .padding()
-                    }
-                    .frame(width: UIScreen.main.bounds.width * 0.915, height: UIScreen.main.bounds.height * 0.101)
-                    
-                    ScrollView{
-                        VStack(spacing: 20) {
-                            ForEach(0..<5) { number in
-                                ReservationItem()
-                                    .padding(.horizontal)
-                                    .padding(.top, number == 0 ? UIScreen.main.bounds.height * 0.02 : 0)
-                                    .padding(.bottom, number == 4 ? UIScreen.main.bounds.height * 0.02 : 0)
+                            VStack{
+                                HStack {
+                                    VStack {
+                                        Text("Próxima reserva en 0d 3h 29m")
+                                            .fontWeight(.bold)
+                                        Text("12:30 Sala puerta de Tanhäusen")
+                                    }
+                                    .foregroundColor(.black)
+                                    Spacer()
+                                    
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                            .foregroundColor(.black)
+                                        Image(systemName: "arrow.right")
+                                            .foregroundColor(.green)
+                                    }
+                                    .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.height * 0.05)
+                                }
+                                
+                                ProgressView(value: 75, total: 100)
+                                        .accentColor(Color.green)
+                                        .scaleEffect(x: 1, y: 1.25, anchor: .center)
+                                        .frame(width: UIScreen.main.bounds.width * 0.8)
                             }
+                            .padding()
                         }
+                        .frame(width: UIScreen.main.bounds.width * 0.915, height: UIScreen.main.bounds.height * 0.101)
+                    })
                     
-                    }
-                    .padding(.top, 10)
                     
                     
+                    
+                    Spacer()
                 }
-                .navigationBarTitleDisplayMode(.inline)
                 .toolbar{
-                    ToolbarItemGroup(placement: .navigationBarLeading){
+                    ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarLeading){
                         Image("480logohome")
                             .padding(.horizontal)
                     }
-                    ToolbarItemGroup(placement: .navigationBarTrailing){
+                    ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarTrailing){
                         Image(systemName: "bell.fill")
                             
                         Circle()
@@ -165,10 +163,15 @@ struct HomeView: View {
                     
                 }
                 
+                
+                
+//                NavigationLink(destination: ReservationDetailsView(), isActive: $showDetail, label: {
+//                    EmptyView()
+//                })
             }
-            .ignoresSafeArea()
             
-        }
+            
+        
     
     }
 }

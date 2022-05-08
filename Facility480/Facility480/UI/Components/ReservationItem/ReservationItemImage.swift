@@ -8,26 +8,22 @@
 import SwiftUI
 
 struct ReservationItemImage: View {
-    var facilityName: String?
     
     var body: some View{
         VStack {
             ZStack {
-                RoundedRectangle(cornerRadius: 25, style: .continuous)
-                    .frame(width: 72, height: 72)
-                    .foregroundColor(.green)
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .frame(width: 52, height: 52)
+                    .foregroundColor(.gray)
                 
                 Image("vehicleicon")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 33, height: 33)
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(.white)
                     
             }
             
-            if let facilityName = facilityName {
-                Text(facilityName)
-                    .foregroundColor(.white)
-            }
             
         }
     }

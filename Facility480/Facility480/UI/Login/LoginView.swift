@@ -59,7 +59,9 @@ struct LoginView: View {
                     .padding(.vertical)
                     
                     NavigationLink(isActive: $viewModel.isLoggedIn, destination:{
-                        HomeView().navigationBarHidden(true)
+                        HomeView()
+                            .ignoresSafeArea()
+                            .navigationBarBackButtonHidden(true)
                     }, label: {
                         ZStack {
                             Rectangle()

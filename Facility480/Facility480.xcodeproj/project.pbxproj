@@ -17,6 +17,11 @@
 		129804D028204D8E0073C7F5 /* MyReservationsView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129804CF28204D8E0073C7F5 /* MyReservationsView-ViewModel.swift */; };
 		12992BA92821341100F796D5 /* MyReservationsTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12992BA82821341100F796D5 /* MyReservationsTopBarView.swift */; };
 		129FB043281697A900CAF6DB /* HomeView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FB042281697A900CAF6DB /* HomeView-ViewModel.swift */; };
+		12A1502328252D2A008B453E /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A1502228252D2A008B453E /* Reservation.swift */; };
+		12A6D6752823D0E30029E0B4 /* MyReservationsTab-Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6D6742823D0E30029E0B4 /* MyReservationsTab-Current.swift */; };
+		12A6D6772823D10E0029E0B4 /* MyReservationsTab-History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6D6762823D10E0029E0B4 /* MyReservationsTab-History.swift */; };
+		12A6D67A2823D4FC0029E0B4 /* ReservationItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6D6792823D4FC0029E0B4 /* ReservationItemButton.swift */; };
+		12A6D67E2823E0670029E0B4 /* ReservationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6D67D2823E0670029E0B4 /* ReservationDetailsView.swift */; };
 		12BA6B45281958CF00D44482 /* ReservationItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA6B44281958CF00D44482 /* ReservationItemImage.swift */; };
 		12BA6B4728195E5200D44482 /* ReservationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA6B4628195E5200D44482 /* ReservationItem.swift */; };
 		12C3A5B1280439F1002EBEF3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C3A5B0280439F1002EBEF3 /* LoginView.swift */; };
@@ -35,6 +40,11 @@
 		129804CF28204D8E0073C7F5 /* MyReservationsView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyReservationsView-ViewModel.swift"; sourceTree = "<group>"; };
 		12992BA82821341100F796D5 /* MyReservationsTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReservationsTopBarView.swift; sourceTree = "<group>"; };
 		129FB042281697A900CAF6DB /* HomeView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView-ViewModel.swift"; sourceTree = "<group>"; };
+		12A1502228252D2A008B453E /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
+		12A6D6742823D0E30029E0B4 /* MyReservationsTab-Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyReservationsTab-Current.swift"; sourceTree = "<group>"; };
+		12A6D6762823D10E0029E0B4 /* MyReservationsTab-History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyReservationsTab-History.swift"; sourceTree = "<group>"; };
+		12A6D6792823D4FC0029E0B4 /* ReservationItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationItemButton.swift; sourceTree = "<group>"; };
+		12A6D67D2823E0670029E0B4 /* ReservationDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDetailsView.swift; sourceTree = "<group>"; };
 		12BA6B44281958CF00D44482 /* ReservationItemImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationItemImage.swift; sourceTree = "<group>"; };
 		12BA6B4628195E5200D44482 /* ReservationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationItem.swift; sourceTree = "<group>"; };
 		12C3A5B0280439F1002EBEF3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -76,6 +86,7 @@
 		1206E9A528042A1C0096C29C /* Facility480 */ = {
 			isa = PBXGroup;
 			children = (
+				12A1502128252D18008B453E /* Models */,
 				12C3A5AF280439B1002EBEF3 /* UI */,
 				1206E9A828042A1C0096C29C /* ContentView.swift */,
 				1206E9A628042A1C0096C29C /* Facility480App.swift */,
@@ -107,6 +118,7 @@
 			children = (
 				1295F62228100C6200B37F0D /* HomeView.swift */,
 				129FB042281697A900CAF6DB /* HomeView-ViewModel.swift */,
+				12A6D6782823D4DA0029E0B4 /* Components */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -114,9 +126,9 @@
 		129804CC28204D370073C7F5 /* MyReservations */ = {
 			isa = PBXGroup;
 			children = (
-				12A6D6712823AF100029E0B4 /* MyReservationsTabs */,
 				129804CD28204D750073C7F5 /* MyReservationsView.swift */,
 				129804CF28204D8E0073C7F5 /* MyReservationsView-ViewModel.swift */,
+				12A6D6712823AF100029E0B4 /* MyReservationsTabs */,
 				12992BA72821244800F796D5 /* Components */,
 			);
 			path = MyReservations;
@@ -130,18 +142,52 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		12A1502128252D18008B453E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				12A1502228252D2A008B453E /* Reservation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		12A6D6712823AF100029E0B4 /* MyReservationsTabs */ = {
 			isa = PBXGroup;
 			children = (
+				12A6D6742823D0E30029E0B4 /* MyReservationsTab-Current.swift */,
+				12A6D6762823D10E0029E0B4 /* MyReservationsTab-History.swift */,
 			);
 			path = MyReservationsTabs;
+			sourceTree = "<group>";
+		};
+		12A6D6782823D4DA0029E0B4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				12A6D6792823D4FC0029E0B4 /* ReservationItemButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		12A6D67B2823E0390029E0B4 /* ReservationDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				12A6D67D2823E0670029E0B4 /* ReservationDetailsView.swift */,
+			);
+			path = ReservationDetailsView;
+			sourceTree = "<group>";
+		};
+		12A6D67F2823E5E90029E0B4 /* ReservationItem */ = {
+			isa = PBXGroup;
+			children = (
+				12BA6B44281958CF00D44482 /* ReservationItemImage.swift */,
+				12BA6B4628195E5200D44482 /* ReservationItem.swift */,
+			);
+			path = ReservationItem;
 			sourceTree = "<group>";
 		};
 		12BA6B432819585A00D44482 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				12BA6B44281958CF00D44482 /* ReservationItemImage.swift */,
-				12BA6B4628195E5200D44482 /* ReservationItem.swift */,
+				12A6D67F2823E5E90029E0B4 /* ReservationItem */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -152,6 +198,7 @@
 				1295F61E281004E500B37F0D /* Login */,
 				1295F62128100C5300B37F0D /* Home */,
 				129804CC28204D370073C7F5 /* MyReservations */,
+				12A6D67B2823E0390029E0B4 /* ReservationDetailsView */,
 				12BA6B432819585A00D44482 /* Components */,
 			);
 			path = UI;
@@ -289,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12C3A5B1280439F1002EBEF3 /* LoginView.swift in Sources */,
+				12A6D67A2823D4FC0029E0B4 /* ReservationItemButton.swift in Sources */,
 				12BA6B4728195E5200D44482 /* ReservationItem.swift in Sources */,
 				1295F6202810050900B37F0D /* LoginView-ViewModel.swift in Sources */,
 				129FB043281697A900CAF6DB /* HomeView-ViewModel.swift in Sources */,
@@ -296,8 +344,12 @@
 				1206E9A928042A1C0096C29C /* ContentView.swift in Sources */,
 				1295F62328100C6200B37F0D /* HomeView.swift in Sources */,
 				129804CE28204D750073C7F5 /* MyReservationsView.swift in Sources */,
+				12A6D6752823D0E30029E0B4 /* MyReservationsTab-Current.swift in Sources */,
 				12992BA92821341100F796D5 /* MyReservationsTopBarView.swift in Sources */,
+				12A6D67E2823E0670029E0B4 /* ReservationDetailsView.swift in Sources */,
 				12BA6B45281958CF00D44482 /* ReservationItemImage.swift in Sources */,
+				12A6D6772823D10E0029E0B4 /* MyReservationsTab-History.swift in Sources */,
+				12A1502328252D2A008B453E /* Reservation.swift in Sources */,
 				1206E9A728042A1C0096C29C /* Facility480App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
