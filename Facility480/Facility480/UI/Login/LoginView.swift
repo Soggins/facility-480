@@ -12,7 +12,7 @@ struct LoginView: View {
     
     
     var body: some View {
-        NavigationView{
+        
         ZStack {
             
                 VStack {
@@ -158,7 +158,7 @@ struct LoginView: View {
             
         }
         .ignoresSafeArea()
-        }
+        
     }
 }
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375px" height="812px" viewBox="0 0 375 812" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>1.1 Configuración - Acceso</title>
+    <defs>
+        <linearGradient x1="60.6640085%" y1="0%" x2="39.3359915%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#4D4D4D" offset="0%"></stop>
+            <stop stop-color="#212529" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="1.1-Configuración---Acceso" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#4D4D4D" x="0" y="0" width="375" height="812"></rect>
+        <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="375" height="812"></rect>
+        <g id="Group-7" opacity="0.1" transform="translate(405.500000, 572.500000) rotate(-139.000000) translate(-405.500000, -572.500000) translate(-288.000000, 62.000000)" stroke="#FFFFFF" stroke-linejoin="round" stroke-width="58">
+            <rect id="Rectangle" x="0.444379642" y="26.5442063" width="627" height="994" rx="24"></rect>
+            <rect id="Rectangle-Copy" x="759.796684" y="0.152385046" width="627" height="352" rx="24"></rect>
+            <rect id="Rectangle-Copy-2" x="760.02578" y="646.097432" width="247" height="352" rx="24"></rect>
+            <rect id="Rectangle-Copy-3" x="1139.98613" y="645.731176" width="247" height="352" rx="24"></rect>
+        </g>
+    </g>
+</svg>

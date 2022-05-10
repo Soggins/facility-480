@@ -7,6 +7,17 @@
 
 import SwiftUI
 
+extension UINavigationController: UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
+    }
+}
+
 enum MyReservationsTabEnum: Hashable, CaseIterable{
     case current, history
     
@@ -31,13 +42,7 @@ struct MyReservationsView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    ///
-    ///
-    ///
     
-    ///
-    ///
-    ///
 
     var body: some View {
             ZStack {
@@ -55,6 +60,7 @@ struct MyReservationsView: View {
                             .tag(MyReservationsTabEnum.history)
                         })
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    .frame(width: UIScreen.main.bounds.width * 0.95)
                    
             
                 }
