@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var viewModel = LoginViewModel()
+    @StateObject var viewModel : LoginViewModel
     
     
     var body: some View {
@@ -158,12 +158,13 @@ struct LoginView: View {
             
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
         
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}

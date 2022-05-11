@@ -61,6 +61,7 @@ struct MyReservationsView: View {
                         })
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .frame(width: UIScreen.main.bounds.width * 0.95)
+                    
                    
             
                 }

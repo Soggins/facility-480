@@ -7,8 +7,46 @@
 
 import SwiftUI
 
+enum EnvironmentViewsEnum: Hashable, CaseIterable, Identifiable {
+
+    case home, login
+    
+    var id: String {
+        return self.getName()
+    }
+    
+    func getName() -> String {
+        switch self {
+        case .login:
+            return "login"
+        case .home:
+            return "home"
+        }
+    }
+}
+
 struct EnvironmentView: View {
-    @Binding var showCompany = false
+    @StateObject private var viewModel = EnvironmentViewModel()
+    @State var showPopUp : Bool = false
+    
+    private func activeLink() -> Binding<EnvironmentViewsEnum?> {
+        return Binding(get: {
+            //print(viewModel.flowControl)
+            return viewModel.flowControl
+        }, set: {
+            viewModel.flowControl = $0
+        })
+    }
+    
+    @ViewBuilder
+    private var navigationLinks: some View {
+        NavigationLink(tag: EnvironmentViewsEnum.login, selection: activeLink(),
+               destination: {
+                    LoginView(viewModel: LoginViewModel())},
+               label: {
+                    EmptyView()
+        })
+    }
     
     var body: some View {
         NavigationView {
@@ -44,7 +82,9 @@ struct EnvironmentView: View {
                     }
                     ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing){
                         Button{
-                            
+                            withAnimation{
+                                showPopUp = true
+                            }
                         } label: {
                             Circle()
                                 .fill()
@@ -56,8 +96,20 @@ struct EnvironmentView: View {
                     
                 }
                 
+                navigationLinks
+                
+                if(showPopUp){
+                    withAnimation{
+                        CompanyView(viewModel: CompanyViewModel(handleOnOkButtonPress: {
+                            viewModel.handleOnCompanySelected()
+                        }), show: $showPopUp)
+                            .padding(.bottom, 130)
+                    }
+                }
+                
             }
             .ignoresSafeArea()
+            
         }
     }
 }

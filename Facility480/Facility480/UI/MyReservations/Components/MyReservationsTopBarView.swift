@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-struct Tab {
-    var title: String
-}
-
 struct MyReservationsTopBarView: View {
     var fixed = true
     var geoWidth: CGFloat
@@ -50,15 +46,15 @@ struct MyReservationsTopBarView: View {
                                         .animation(.easeInOut, value: selectedTab)
                                 }.fixedSize()
                             })
-                                .accentColor(Color.white)
-                                .buttonStyle(PlainButtonStyle())
+                            .accentColor(Color.white)
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
                     .onChange(of: selectedTab) { target in
                         withAnimation {
                             proxy.scrollTo(target)
                         }
-                        print(selectedTab)
+//                        print(selectedTab)
                     }
                 }
             }

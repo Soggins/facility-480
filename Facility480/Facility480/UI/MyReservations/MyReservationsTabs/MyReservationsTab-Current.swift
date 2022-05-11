@@ -29,14 +29,15 @@ struct MyReservationsTab_Current: View {
     @State private var showDetail = false
     
     var body: some View {
-        ScrollView{
-            VStack(spacing: 5) {
+        List{
+//            VStack(spacing: 5) {
                 ForEach(reservations, id: \.self) { reservation in
                     ReservationItem(reservation: reservation, showDetail: $showDetail)
                 }
-            }
+//            }
         
         }
+        .listStyle(.plain)
         .padding(.top, 10)
         
     }

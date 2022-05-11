@@ -22,28 +22,29 @@ struct ReservationItem: View {
                 print(reservation.price)
 
             } label: {
-                ReservationItemImage()
-                VStack(alignment: .leading) {
-                    Text(reservation.name)
-                        .font(.callout)
-                        .fontWeight(.semibold)
-                    Text(reservation.time)
+                HStack {
+                    ReservationItemImage()
+                    VStack(alignment: .leading) {
+                        Text(reservation.name)
+                            .font(.callout)
+                            .fontWeight(.semibold)
+                        Text(reservation.time)
+                            .font(.footnote)
+                    }
+                    
+                    Text("\(reservation.price)€")
                         .font(.footnote)
+                        .fontWeight(.bold)
+                        .frame(width: 40, height: 20)
+                        .background(RoundedRectangle(cornerRadius: 15, style: .continuous).fill(.gray.opacity(0.1)))
+                        .padding(.bottom, 15)
+                    
+                        Spacer()
+                        
                 }
-                
-                
-                Spacer()
-                
-                Text("\(reservation.price)€")
-                    .font(.footnote)
-                    .fontWeight(.bold)
-                    .frame(width: 40, height: 20)
-                    .background(RoundedRectangle(cornerRadius: 15, style: .continuous).fill(.gray.opacity(0.1)))
-                    .padding(.bottom, 15)
-                
-                Spacer()
             }
             .foregroundColor(.black)
+            .frame(width: 290)
             
             
             Menu{

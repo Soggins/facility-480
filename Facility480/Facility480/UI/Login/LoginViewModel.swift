@@ -14,5 +14,7 @@ class LoginViewModel: ObservableObject {
     @Published var recordar: Bool = false
     
     @Published var isLoggedIn: Bool = false
+    
+    
 }
 
