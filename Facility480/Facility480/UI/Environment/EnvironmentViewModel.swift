@@ -9,13 +9,22 @@ import Foundation
 
 class EnvironmentViewModel: ObservableObject {
     @Published var isCompanySelected: Bool = false
-    @Published var flowControl: EnvironmentViewsEnum?
+    @Published var flowControl: MyViewsEnum?
+    let flowControlListener: ((MyViewsEnum) -> Void)?
+    
+    init(flowControlListener: ((MyViewsEnum) -> Void)? = nil){
+        self.flowControlListener = flowControlListener
+    }
     
     public func handleOnUserLogged() {
-        flowControl = .home
+        if let flowControlListener = self.flowControlListener {
+            flowControlListener(.home)
+        }
     }
     
     public func handleOnCompanySelected() {
-        flowControl = .login
+        if let flowControlListener = self.flowControlListener {
+            flowControlListener(.login)
+        }
     }
 }

@@ -58,11 +58,9 @@ struct LoginView: View {
                     }
                     .padding(.vertical)
                     
-                    NavigationLink(isActive: $viewModel.isLoggedIn, destination:{
-                        HomeView()
-                            .ignoresSafeArea()
-                            .navigationBarBackButtonHidden(true)
-                    }, label: {
+                    Button{
+                        viewModel.Login()
+                    } label: {
                         ZStack {
                             Rectangle()
                                 .frame(width: 300, height: 40)
@@ -73,7 +71,7 @@ struct LoginView: View {
                                 .bold()
                                 .foregroundColor(.gray)
                         }
-                    })
+                    }
                     
                     Group {
                         HStack {
