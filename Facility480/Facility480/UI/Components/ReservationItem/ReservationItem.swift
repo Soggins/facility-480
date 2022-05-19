@@ -10,7 +10,7 @@ import SwiftUI
 struct ReservationItem: View {
     let reservation: Reservation
     
-    //@Binding var selectedItem: Int
+    @Binding var selectedItem: Reservation?
     @Binding var showDetail: Bool
     
     var body: some View {
@@ -18,7 +18,8 @@ struct ReservationItem: View {
         HStack(alignment: .center) {
             
             Button {
-                //selectedItem = 1
+                selectedItem = reservation
+                showDetail = true
                 print(reservation.price)
 
             } label: {
@@ -68,8 +69,8 @@ struct ReservationItem: View {
     func cancel() { }
 }
 
-struct ReservationItem_Previews: PreviewProvider {
-    static var previews: some View {
-        ReservationItem(reservation: Reservation(name: "Puesto de trabajo 45", time: "Lunes 31 may. | 8:00 a 17:30", price: 2), showDetail: .constant(false))
-    }
-}
+//struct ReservationItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReservationItem(reservation: Reservation(name: "Puesto de trabajo 45", time: "Lunes 31 may. | 8:00 a 17:30", price: 2), showDetail: .constant(false))
+//    }
+//}

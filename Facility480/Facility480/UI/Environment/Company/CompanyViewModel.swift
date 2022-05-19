@@ -16,7 +16,7 @@ class CompanyViewModel: ObservableObject {
     }
     
     func companyIsValid() {
-        if let handleOnOkButtonPress = handleOnOkButtonPress {
+        if let handleOnOkButtonPress = self.handleOnOkButtonPress {
             handleOnOkButtonPress()
         }
     }

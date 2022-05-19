@@ -42,24 +42,7 @@ enum MyViewsEnum: Hashable, CaseIterable, Identifiable {
 struct Facility480App: App {
     @StateObject var viewModel = MainViewModel()
     
-//    private func activeLink() -> Binding<MyViewsEnum?> {
-//        return Binding(get: {
-//            //print(viewModel.flowControl)
-//            return viewModel.flowControl
-//        }, set: {
-//            viewModel.flowControl = $0
-//        })
-//    }
-    
-//    @ViewBuilder
-//    private var navigationLinks: some View {
-//        NavigationLink(tag: MyViewsEnum.login, selection: activeLink(),
-//               destination: {
-//                    LoginView(viewModel: LoginViewModel())},
-//               label: {
-//                    EmptyView()
-//        })
-//    }
+
     
     @ViewBuilder
     private func getLoginView() -> some View {

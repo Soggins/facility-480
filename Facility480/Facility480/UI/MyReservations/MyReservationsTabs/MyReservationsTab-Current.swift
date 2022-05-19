@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MyReservationsTab_Current: View {
+    @Binding var selectedItem: Reservation?
+    
+    
     let reservations : [Reservation] =
     [Reservation(name: "Puesto de trabajo 45", time: "Lunes 31 may. | 8:00 a 17:30", price: 1),
      Reservation(name: "Puesto de trabajo 45", time: "Lunes 31 may. | 8:00 a 17:30", price: 2),
@@ -26,13 +29,13 @@ struct MyReservationsTab_Current: View {
       Reservation(name: "Puesto de trabajo 45", time: "Lunes 31 may. | 8:00 a 17:30", price: 15)
      ]
     
-    @State private var showDetail = false
+    @Binding var showDetail: Bool
     
     var body: some View {
         List{
 //            VStack(spacing: 5) {
                 ForEach(reservations, id: \.self) { reservation in
-                    ReservationItem(reservation: reservation, showDetail: $showDetail)
+                    ReservationItem(reservation: reservation, selectedItem: $selectedItem, showDetail: $showDetail)
                 }
 //            }
         
@@ -42,9 +45,9 @@ struct MyReservationsTab_Current: View {
         
     }
 }
-
-struct MyReservationsTab_Current_Previews: PreviewProvider {
-    static var previews: some View {
-        MyReservationsTab_Current()
-    }
-}
+//
+//struct MyReservationsTab_Current_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyReservationsTab_Current(selectedItem: <#Binding<Reservation?>#>, showDetail: <#Binding<Bool>#>)
+//    }
+//}

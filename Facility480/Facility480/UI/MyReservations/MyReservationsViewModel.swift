@@ -8,7 +8,17 @@
 import Foundation
 
 class MyReservationsViewModel: ObservableObject {
-
-        
-
+    @Published var flowControl: HomeViewsEnum? = nil
+    
+    let handleOnDetails: (() -> Void)?
+    
+    init(handleOnDetails: (() -> Void)? = nil) {
+        self.handleOnDetails = handleOnDetails
+    }
+    
+    func toDetails(){
+        if let handleOnDetails = handleOnDetails {
+            handleOnDetails()
+        }
+    }
 }

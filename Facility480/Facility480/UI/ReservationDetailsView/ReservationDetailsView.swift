@@ -52,7 +52,7 @@ struct ReservationDetailsView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     Menu{
-                        Button("Cancel", action: { })
+                        Button("Cancel", action: { self.mode.wrappedValue.dismiss() })
                     } label: {
                     Image(systemName: "ellipsis")
                         .rotationEffect(.degrees(90))

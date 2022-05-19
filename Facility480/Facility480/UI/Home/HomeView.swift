@@ -7,14 +7,77 @@
 
 import SwiftUI
 
+enum HomeViewsEnum: Hashable, CaseIterable, Identifiable {
+
+    case makeReservation, myReservations, reservationDetails, settings
+    
+    var id: String {
+        self.getName()
+    }
+    
+    func getName() -> String {
+        switch self {
+        case .makeReservation:
+            return "makeReservation"
+        case .myReservations:
+            return "myReservation"
+        case .reservationDetails:
+            return "reservationDetails"
+        case .settings:
+            return "settings"
+        }
+    }
+}
+
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     @State private var showDetail = false
     let reservation = Reservation(name: "Puesto de trabajo 45", time: "Lunes 31 may. | 8:00 a 17:30", price: 2)
     
+    private func activeLink() -> Binding<HomeViewsEnum?> {
+        return Binding(get: {
+            print(viewModel.flowControl)
+            return viewModel.flowControl
+        }, set: {
+            viewModel.flowControl = $0
+        })
+    }
+    
+    @ViewBuilder
+    private var navigationLinks: some View {
+        NavigationLink(tag: HomeViewsEnum.myReservations, selection: activeLink(),
+               destination: {
+            MyReservationsView(viewModel: MyReservationsViewModel(handleOnDetails: {
+                viewModel.handleOnDetails()
+            }))
+                .ignoresSafeArea()
+                .navigationBarBackButtonHidden(true)
+        },
+               label: {
+                    EmptyView()
+        })
+        NavigationLink(tag: HomeViewsEnum.reservationDetails, selection: activeLink(),
+               destination: {
+            ReservationDetailsView(reservation: reservation)
+                .ignoresSafeArea()
+                .navigationBarBackButtonHidden(true)
+        },
+               label: {
+                    EmptyView()
+        })
+        NavigationLink(tag: HomeViewsEnum.settings, selection: activeLink(),
+               destination: {
+            SettingsView()
+                .ignoresSafeArea()
+                .navigationBarBackButtonHidden(true)
+        },
+               label: {
+                    EmptyView()
+        })
+    }
     
     var body: some View {
-        
+        NavigationView {
             ZStack {
                 VStack {
                     ZStack {
@@ -46,7 +109,7 @@ struct HomeView: View {
                                 
                             ZStack{
                                 Rectangle()
-                                    .frame(width: UIScreen.main.bounds.width * 0.86, height: UIScreen.main.bounds.height * 0.054)
+                                    .frame(width: 325, height: 44)
                                     .foregroundColor(.white)
                                     .clipShape(Capsule())
                                 
@@ -58,7 +121,6 @@ struct HomeView: View {
                                         
                                 }
                             }
-                            .padding(.bottom, UIScreen.main.bounds.height * 0.015)
                             
                             Spacer()
                             
@@ -78,7 +140,7 @@ struct HomeView: View {
                             Spacer()
                         }
                     }
-                    .frame(height: UIScreen.main.bounds.height * 0.49)
+                    .frame(height: 354)
                     
                     HStack {
                         Text("Mis reservas")
@@ -86,11 +148,9 @@ struct HomeView: View {
                         
                         Spacer()
                         
-                        NavigationLink(isActive: $viewModel.toAllReservations, destination:{
-                            MyReservationsView()
-                                .ignoresSafeArea()
-                                .navigationBarBackButtonHidden(true)
-                        }, label: {
+                        Button{
+                            viewModel.handleOnViewAll()
+                        } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 25, style: .continuous)
                                     .foregroundColor(.green)
@@ -100,15 +160,13 @@ struct HomeView: View {
                                     .foregroundColor(.black)
                             }
                             .frame(width: UIScreen.main.bounds.width * 0.26, height: UIScreen.main.bounds.height * 0.04)
-                        })
+                        }
                     }
                     .padding()
                     
-                    NavigationLink(isActive: $showDetail, destination:{
-                        ReservationDetailsView(reservation: reservation)
-                            .ignoresSafeArea()
-                            .navigationBarBackButtonHidden(true)
-                    }, label: {
+                    Button {
+                        viewModel.handleOnDetails()
+                    } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 15, style: .continuous)
                                 .foregroundColor(.gray.opacity(0.2))
@@ -140,7 +198,7 @@ struct HomeView: View {
                             .padding()
                         }
                         .frame(width: UIScreen.main.bounds.width * 0.915, height: UIScreen.main.bounds.height * 0.101)
-                    })
+                    }
                     
                     
                     
@@ -155,20 +213,26 @@ struct HomeView: View {
                     ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarTrailing){
                         Image(systemName: "bell.fill")
                             
-                        Circle()
-                            .fill()
-                            .foregroundColor(.blue)
-                            .padding(.horizontal)
+                        Button{
+                            viewModel.handleOnSettings()
+                        } label: {
+                            Circle()
+                                    .fill()
+                                    .foregroundColor(.blue)
+                                    .padding(.horizontal)
+                        }
                     }
                     
                 }
                 
                 
-                
+                navigationLinks
 //                NavigationLink(destination: ReservationDetailsView(), isActive: $showDetail, label: {
 //                    EmptyView()
 //                })
             }
+            .ignoresSafeArea()
+        }
             
             
         

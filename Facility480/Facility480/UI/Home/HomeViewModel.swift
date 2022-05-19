@@ -8,9 +8,23 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-        @Published var searchbar = ""
+    @Published var flowControl: HomeViewsEnum? = nil
+    
+    @Published var searchbar = ""
         
-        @Published var toAllReservations: Bool = false
+    @Published var toAllReservations: Bool = false
+    
+    func handleOnViewAll() {
+        flowControl = .myReservations
+    }
+    
+    func handleOnDetails() {
+        flowControl = .reservationDetails
+    }
+    
+    func handleOnSettings() {
+        flowControl = .settings
+    }
 }
 
 

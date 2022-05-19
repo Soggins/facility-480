@@ -27,9 +27,12 @@ enum MyReservationsTabEnum: Hashable, CaseIterable{
 }
 
 struct MyReservationsView: View {
-    @StateObject private var viewModel = MyReservationsViewModel()
+    @StateObject var viewModel: MyReservationsViewModel
     
     @State private var selectedTab: MyReservationsTabEnum = .current
+    
+    @State var selectedItem: Reservation?
+    @State var showDetail = false
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
@@ -45,7 +48,7 @@ struct MyReservationsView: View {
                     
                     TabView(selection: $selectedTab,
                         content: {
-                            MyReservationsTab_Current()
+                        MyReservationsTab_Current(selectedItem: $selectedItem, showDetail: $showDetail)
                             .tag(MyReservationsTabEnum.current)
                             MyReservationsTab_History()
                             .tag(MyReservationsTabEnum.history)
@@ -84,6 +87,15 @@ struct MyReservationsView: View {
                         
                     }
                 }
+                NavigationLink(destination:
+                    ReservationDetailsView(reservation: selectedItem ?? Reservation(name: "not found", time: "not found", price: 0))
+                        .ignoresSafeArea()
+                        .navigationBarBackButtonHidden(true)
+                
+                , isActive: $showDetail,
+                               label: {
+                EmptyView()
+                })
             }
             
         
@@ -92,6 +104,6 @@ struct MyReservationsView: View {
 
 struct MyReservationsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyReservationsView()
+        MyReservationsView(viewModel: MyReservationsViewModel())
     }
 }
