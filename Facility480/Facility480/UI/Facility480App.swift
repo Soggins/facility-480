@@ -46,7 +46,7 @@ struct Facility480App: App {
     
     @ViewBuilder
     private func getLoginView() -> some View {
-        LoginView(viewModel: LoginViewModel(handleOnLogin: {
+        LoginView(viewModel: LoginViewModel(repositories: viewModel.dependencyInjector.repositories, handleOnLogin: {
             viewModel.flowControl = .home
         }))
         .ignoresSafeArea()

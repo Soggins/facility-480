@@ -10,4 +10,6 @@ import Foundation
 class MainViewModel: ObservableObject {
     
     @Published var flowControl: MyViewsEnum? = .company
+    
+    @Published var dependencyInjector = DependencyInjector()
 }

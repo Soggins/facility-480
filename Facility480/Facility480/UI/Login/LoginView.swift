@@ -35,7 +35,7 @@ struct LoginView: View {
                         .frame(width: UIScreen.main.bounds.size.width * 0.85,height: 30)
                         .padding()
                     
-                    TextField("Password", text: $viewModel.pass)
+                    TextField("Password", text: $viewModel.password)
                         .frame(width: UIScreen.main.bounds.size.width * 0.85,height: 30)
                         .padding()
                     
@@ -59,7 +59,7 @@ struct LoginView: View {
                     .padding(.vertical)
                     
                     Button{
-                        viewModel.Login()
+                        viewModel.logIn()
                     } label: {
                         ZStack {
                             Rectangle()
