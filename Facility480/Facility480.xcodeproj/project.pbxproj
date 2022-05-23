@@ -32,6 +32,7 @@
 		12AB1646283BAD8B003380FD /* UserRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB1645283BAD8B003380FD /* UserRemoteDataSource.swift */; };
 		12AB1649283BAE78003380FD /* UserLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB1648283BAE78003380FD /* UserLoginUseCase.swift */; };
 		12AB164B283BB3B7003380FD /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB164A283BB3B7003380FD /* DependencyInjector.swift */; };
+		12AB164D283C3024003380FD /* UIEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB164C283C3024003380FD /* UIEffects.swift */; };
 		12B442EB282A723C00AB5BF6 /* EnvironmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B442EA282A723C00AB5BF6 /* EnvironmentView.swift */; };
 		12B442F0282A7E1000AB5BF6 /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B442EF282A7E1000AB5BF6 /* CompanyView.swift */; };
 		12BA6B45281958CF00D44482 /* ReservationItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA6B44281958CF00D44482 /* ReservationItemImage.swift */; };
@@ -67,6 +68,7 @@
 		12AB1645283BAD8B003380FD /* UserRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRemoteDataSource.swift; sourceTree = "<group>"; };
 		12AB1648283BAE78003380FD /* UserLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginUseCase.swift; sourceTree = "<group>"; };
 		12AB164A283BB3B7003380FD /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
+		12AB164C283C3024003380FD /* UIEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEffects.swift; sourceTree = "<group>"; };
 		12B442EA282A723C00AB5BF6 /* EnvironmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentView.swift; sourceTree = "<group>"; };
 		12B442EF282A7E1000AB5BF6 /* CompanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
 		12BA6B44281958CF00D44482 /* ReservationItemImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationItemImage.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				129804CC28204D370073C7F5 /* MyReservations */,
 				12A6D67B2823E0390029E0B4 /* ReservationDetailsView */,
 				12BA6B432819585A00D44482 /* Components */,
+				12AB164C283C3024003380FD /* UIEffects.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				1295F6202810050900B37F0D /* LoginViewModel.swift in Sources */,
 				12B442EB282A723C00AB5BF6 /* EnvironmentView.swift in Sources */,
 				129FB043281697A900CAF6DB /* HomeViewModel.swift in Sources */,
+				12AB164D283C3024003380FD /* UIEffects.swift in Sources */,
 				12AB1646283BAD8B003380FD /* UserRemoteDataSource.swift in Sources */,
 				12AB164B283BB3B7003380FD /* DependencyInjector.swift in Sources */,
 				12B442F0282A7E1000AB5BF6 /* CompanyView.swift in Sources */,

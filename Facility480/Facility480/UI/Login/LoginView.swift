@@ -34,10 +34,12 @@ struct LoginView: View {
                     TextField("Email", text: $viewModel.email)
                         .frame(width: UIScreen.main.bounds.size.width * 0.85,height: 30)
                         .padding()
+                        .keyboardType(.emailAddress)
                     
-                    TextField("Password", text: $viewModel.password)
+                    SecureField("Password", text: $viewModel.password)
                         .frame(width: UIScreen.main.bounds.size.width * 0.85,height: 30)
                         .padding()
+                        
                     
                     HStack (){
                         Toggle("", isOn: $viewModel.recordar)

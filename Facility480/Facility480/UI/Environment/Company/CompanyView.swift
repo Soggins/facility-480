@@ -10,8 +10,8 @@ import SwiftUI
 struct CompanyView: View {
     @StateObject var viewModel: CompanyViewModel
     
-    @State var companyCode = ""
     @Binding var show: Bool
+    @State var invalidAttempts = 0
     
     
     var body: some View {
@@ -22,7 +22,7 @@ struct CompanyView: View {
                     .fontWeight(.medium)
                     .padding(.top, 30)
                 
-                TextField("Company code", text: $companyCode)
+                TextField("Company code", text: $viewModel.companyCode)
                     .frame(width: 295, height: 22)
                 
                 Spacer()
@@ -44,9 +44,13 @@ struct CompanyView: View {
                     
                     Spacer()
                     
-                    Button{
-                        viewModel.companyIsValid()
-                    } label: {
+                    Button(action: {
+                        if !viewModel.checkCompany() {
+                            withAnimation{
+                                invalidAttempts += 1
+                            }
+                        }
+                    }){
                         Text("OK")
                             .bold()
                     }
@@ -58,6 +62,7 @@ struct CompanyView: View {
             }
             .frame(width: 336, height: 214)
             .background(.white)
+            .modifier(ShakeEffect(animatableData: CGFloat(invalidAttempts)))
         }
         .ignoresSafeArea()
         
