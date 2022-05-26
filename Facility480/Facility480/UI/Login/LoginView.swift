@@ -9,6 +9,9 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject var viewModel : LoginViewModel
+    @State var showPassword: Bool = false
+    
+    @State var invalidAttempts = 0
     
     
     var body: some View {
@@ -30,16 +33,39 @@ struct LoginView: View {
                         .padding(10)
                         .foregroundColor(.gray)
                         
+                    Group {
+                        TextField("Email", text: $viewModel.email)
+                            .textInputAutocapitalization(.never)
+                            .frame(width: 311,height: 30)
+                            .padding()
+                            .keyboardType(.emailAddress)
                     
-                    TextField("Email", text: $viewModel.email)
-                        .frame(width: UIScreen.main.bounds.size.width * 0.85,height: 30)
+                        HStack{
+                            if showPassword{
+                                TextField("Password", text: $viewModel.password)
+                                    .textInputAutocapitalization(.never)
+                            } else {
+                                SecureField("Password", text: $viewModel.password)
+                                    .textInputAutocapitalization(.never)
+                            }
+                            
+                            Button{
+                                showPassword.toggle()
+                            } label: {
+                                Image(systemName: showPassword ? "eye" : "eye.slash")
+                            }
+                            .foregroundColor(.gray)
+                        }
+                        .frame(width: 311,height: 30)
                         .padding()
-                        .keyboardType(.emailAddress)
+                    }
+                    .modifier(ShakeEffect(animatableData: CGFloat(invalidAttempts)))
+                    .onChange(of: viewModel.invalidAttempts) { _ in
+                        withAnimation{
+                        invalidAttempts += 1
+                        }
+                    }
                     
-                    SecureField("Password", text: $viewModel.password)
-                        .frame(width: UIScreen.main.bounds.size.width * 0.85,height: 30)
-                        .padding()
-                        
                     
                     HStack (){
                         Toggle("", isOn: $viewModel.recordar)
@@ -54,7 +80,6 @@ struct LoginView: View {
                             .bold()
                             .underline()
                             .font(.caption)
-                            
                             .padding(.horizontal)
                             
                     }
@@ -62,6 +87,7 @@ struct LoginView: View {
                     
                     Button{
                         viewModel.logIn()
+                        
                     } label: {
                         ZStack {
                             Rectangle()

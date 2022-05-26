@@ -34,21 +34,26 @@ struct MyReservationsTopBarView: View {
                                             .font(Font.system(size: 18, weight: .semibold))
                                             .foregroundColor(selectedTab == row ? Color.black : Color.gray)
                                             .animation(.easeInOut, value: selectedTab)
+                                            .padding(.horizontal, 5)
+
                                     }
-                                    .frame(width: fixed ? (geoWidth / CGFloat(MyReservationsTabEnum.allCases.count)) : .none, height: 52)
-                                    // Bar Indicator
+                                    
+//                                     Bar Indicator
                                     RoundedRectangle(cornerRadius: 25, style: .continuous)
                                         .fill(selectedTab == row ? Color.green : Color.clear)
-                                        .frame(width: 125 ,height: 10)
+                                        .frame(height: 10)
                                         .offset(y: 10 / 2)
                                         .clipped()
                                         .frame(height: 5)
+                                        .padding(.horizontal, 30)
+                                        .padding(.top, 10)
                                         .animation(.easeInOut, value: selectedTab)
-                                }.fixedSize()
+                                }
+                                
                             })
+                            .frame(width: fixed ? (geoWidth / CGFloat(MyReservationsTabEnum.allCases.count)) : .none, height: 52)
                             .accentColor(Color.white)
                             .buttonStyle(PlainButtonStyle())
-                            
                         }
                     }
                     .onChange(of: selectedTab) { target in

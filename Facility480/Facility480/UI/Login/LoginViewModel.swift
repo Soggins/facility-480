@@ -12,6 +12,7 @@ class LoginViewModel: ObservableObject {
     @Published var email = "hector.martin@cuatroochenta.com"
     @Published var password = "contrasena"
     @Published var recordar: Bool = false
+    @Published var invalidAttempts = 0
     
     @Published var isLoggedIn: Bool = false
     
@@ -24,17 +25,18 @@ class LoginViewModel: ObservableObject {
         self.handleOnLogin = handleOnLogin
     }
     
-    func logIn() {
+    func logIn(){
         userLogIn.execute(user: UserLoginUseCaseParams(username: email, password: password), success: { state in
             print(state)
             if state {
                 if let handleOnLogin = self.handleOnLogin {
                     handleOnLogin()
                 }
+            } else {
+                self.invalidAttempts += 1
             }
             
             self.isLoggedIn = state
-            
         })
     }
 

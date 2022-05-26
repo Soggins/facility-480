@@ -11,8 +11,6 @@ struct CompanyView: View {
     @StateObject var viewModel: CompanyViewModel
     
     @Binding var show: Bool
-    @State var invalidAttempts = 0
-    
     
     var body: some View {
         ZStack{
@@ -45,10 +43,8 @@ struct CompanyView: View {
                     Spacer()
                     
                     Button(action: {
-                        if !viewModel.checkCompany() {
-                            withAnimation{
-                                invalidAttempts += 1
-                            }
+                        withAnimation{
+                            viewModel.checkCompany()
                         }
                     }){
                         Text("OK")
@@ -62,7 +58,7 @@ struct CompanyView: View {
             }
             .frame(width: 336, height: 214)
             .background(.white)
-            .modifier(ShakeEffect(animatableData: CGFloat(invalidAttempts)))
+            .modifier(ShakeEffect(animatableData: CGFloat(viewModel.invalidAttempts)))
         }
         .ignoresSafeArea()
         

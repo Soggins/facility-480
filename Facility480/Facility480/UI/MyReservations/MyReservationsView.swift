@@ -40,7 +40,6 @@ struct MyReservationsView: View {
 
     var body: some View {
             ZStack {
-                
                 VStack(spacing: 0) {
                     
                     MyReservationsTopBarView(geoWidth: UIScreen.main.bounds.width, selectedTab: $selectedTab)
@@ -59,7 +58,6 @@ struct MyReservationsView: View {
                    
             
                 }
-                .padding(.top, UIScreen.main.bounds.height * 0.12)
                 .toolbar{
                     ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarLeading){
                         Button(action: { self.mode.wrappedValue.dismiss() }) {
@@ -97,6 +95,7 @@ struct MyReservationsView: View {
                 EmptyView()
                 })
             }
+            .navigationBarTitleDisplayMode(.inline)
             
         
     }

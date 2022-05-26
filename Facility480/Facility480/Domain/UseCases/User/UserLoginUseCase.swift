@@ -24,7 +24,6 @@ class UserLogInUseCase {
     }
 }
 
-
 public struct UserLoginUseCaseParams: Codable {
     var username: String
     var password: String

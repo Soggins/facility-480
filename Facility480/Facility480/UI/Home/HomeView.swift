@@ -50,7 +50,7 @@ struct HomeView: View {
             MyReservationsView(viewModel: MyReservationsViewModel(handleOnDetails: {
                 viewModel.handleOnDetails()
             }))
-                .ignoresSafeArea()
+//                .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)
         },
                label: {

@@ -10,6 +10,7 @@ import Foundation
 class CompanyViewModel: ObservableObject {
     
     @Published var companyCode: String = ""
+    @Published var invalidAttempts = 0
     
     let handleOnOkButtonPress: (() -> Void)?
     
@@ -17,14 +18,12 @@ class CompanyViewModel: ObservableObject {
         self.handleOnOkButtonPress = handleOnOkButtonPress
     }
     
-    func checkCompany() -> Bool {
+    func checkCompany() {
         //company not implemented in backend
         if companies.contains(companyCode) {
             if let handleOnOkButtonPress = self.handleOnOkButtonPress {
                 handleOnOkButtonPress()
             }
-            return true
-        }
-        return false
+        } else { self.invalidAttempts += 1 }
     }
 }
