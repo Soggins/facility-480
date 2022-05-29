@@ -86,7 +86,7 @@ struct MyReservationsView: View {
                     }
                 }
                 NavigationLink(destination:
-                    ReservationDetailsView(reservation: selectedItem ?? Reservation(name: "not found", time: "not found", price: 0))
+                                ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: selectedItem!, repositories: viewModel.repositories.repositories))
                         .ignoresSafeArea()
                         .navigationBarBackButtonHidden(true)
                 

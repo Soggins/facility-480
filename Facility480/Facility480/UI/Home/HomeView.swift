@@ -31,12 +31,16 @@ enum HomeViewsEnum: Hashable, CaseIterable, Identifiable {
 
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
+    @State var searchbar = ""
+    @State var selectedReservation: Reservation?
     @State private var showDetail = false
-    let reservation = Reservation(name: "Puesto de trabajo 45", time: "Lunes 31 may. | 8:00 a 17:30", price: 2)
+    
+    //when optional currentReservations = nil
+    let emptyReservations: [Reservation] = []
+    
     
     private func activeLink() -> Binding<HomeViewsEnum?> {
         return Binding(get: {
-            print(viewModel.flowControl)
             return viewModel.flowControl
         }, set: {
             viewModel.flowControl = $0
@@ -58,7 +62,7 @@ struct HomeView: View {
         })
         NavigationLink(tag: HomeViewsEnum.reservationDetails, selection: activeLink(),
                destination: {
-            ReservationDetailsView(reservation: reservation)
+            ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: selectedReservation!, repositories: viewModel.repositories.repositories))
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)
         },
@@ -117,7 +121,7 @@ struct HomeView: View {
                                     Image(systemName: "magnifyingglass")
                                         .padding(.leading, UIScreen.main.bounds.width * 0.1)
                                     
-                                    TextField("Buscar", text: $viewModel.searchbar)
+                                    TextField("Buscar", text: $searchbar)
                                         
                                 }
                             }
@@ -164,46 +168,63 @@ struct HomeView: View {
                     }
                     .padding()
                     
-                    Button {
-                        viewModel.handleOnDetails()
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 15, style: .continuous)
-                                .foregroundColor(.gray.opacity(0.2))
-                            
-                            VStack{
-                                HStack {
-                                    VStack {
-                                        Text("Próxima reserva en 0d 3h 29m")
-                                            .fontWeight(.bold)
-                                        Text("12:30 Sala puerta de Tanhäusen")
-                                    }
-                                    .foregroundColor(.black)
-                                    Spacer()
-                                    
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                            .foregroundColor(.black)
-                                        Image(systemName: "arrow.right")
-                                            .foregroundColor(.green)
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.height * 0.05)
-                                }
+                    if viewModel.nextReservation != nil {
+                        Button {
+                            selectedReservation = viewModel.nextReservation
+                            viewModel.handleOnDetails()
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                    .foregroundColor(.gray.opacity(0.2))
                                 
-                                ProgressView(value: 75, total: 100)
-                                        .accentColor(Color.green)
-                                        .scaleEffect(x: 1, y: 1.25, anchor: .center)
-                                        .frame(width: UIScreen.main.bounds.width * 0.8)
+                                VStack{
+                                    HStack {
+                                        VStack {
+                                            Text("Próxima reserva en 0d 3h 29m")
+                                                .fontWeight(.bold)
+                                            Text("\(viewModel.nextReservation?.date ?? "null") \(viewModel.nextReservation?.reservation_id ?? "null")")
+                                        }
+                                        .foregroundColor(.black)
+                                        Spacer()
+                                        
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                                .foregroundColor(.black)
+                                            Image(systemName: "arrow.right")
+                                                .foregroundColor(.green)
+                                        }
+                                        .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.height * 0.05)
+                                    }
+                                    
+                                    ProgressView(value: 75, total: 100)
+                                            .accentColor(Color.green)
+                                            .scaleEffect(x: 1, y: 1.25, anchor: .center)
+                                            .frame(width: UIScreen.main.bounds.width * 0.8)
+                                }
+                                .padding()
                             }
-                            .padding()
+                            .frame(width: UIScreen.main.bounds.width * 0.915, height: UIScreen.main.bounds.height * 0.101)
                         }
-                        .frame(width: UIScreen.main.bounds.width * 0.915, height: UIScreen.main.bounds.height * 0.101)
+                    }
+                    
+                    List {
+                        ForEach(viewModel.currentReservations ?? emptyReservations, id: \.self) { reservationlist in
+                            Button {
+                                viewModel.handleOnDetails()
+                            } label: {
+                                ReservationItem(reservation: reservationlist, selectedReservation: $selectedReservation, showDetail: $showDetail)
+                            }
+                        }
                     }
                     
                     
                     
-                    
                     Spacer()
+                }
+                .onAppear(){
+                    viewModel.getNextReservation()
+                    viewModel.getCurrentReservations()
+                    print("HOME!!!!!!!!!!!!!!!!!")
                 }
                 .toolbar{
                     ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarLeading){
@@ -239,9 +260,9 @@ struct HomeView: View {
     
     }
 }
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(viewModel: HomeViewModel())
-    }
-}
+//
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(viewModel: HomeViewModel())
+//    }
+//}

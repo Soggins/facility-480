@@ -12,20 +12,20 @@ struct DependencyInjector {
     let repositories: DependencyInjector.Repositories
     
     init() {
-        self.repositories = DependencyInjector.Repositories.init(userRepository: UserRemoteDataSource())
+        self.repositories = DependencyInjector.Repositories.init(userRepository: UserRemoteDataSource(), reservationRepository: ReservationDataSource())
     }
-    
 }
 
 extension DependencyInjector {
     struct Repositories {
-        //create repo i need
-//        let reservesRepository: ReservesRepository
+
+        let reservationRepository: ReservationRepository
         
         let userRepository: UserRepository
         
-        init(userRepository: UserRepository) {
+        init(userRepository: UserRepository, reservationRepository: ReservationRepository) {
             self.userRepository = userRepository
+            self.reservationRepository = reservationRepository
         }
     }
 }

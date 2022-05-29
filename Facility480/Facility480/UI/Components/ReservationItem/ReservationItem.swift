@@ -8,32 +8,56 @@
 import SwiftUI
 
 struct ReservationItem: View {
-    let reservation: Reservation
-    
-    @Binding var selectedItem: Reservation?
+    var reservation: Reservation
+    @Binding var selectedReservation: Reservation?
     @Binding var showDetail: Bool
     
+    var icon: String{
+        switch reservation.getData() {
+        case .workStation:
+            return "workspaceicon"
+        case .housing:
+            return "housingicon"
+        case .vehicle:
+            return "vehicleicon"
+        case .none:
+            return ""
+        }
+    }
+    var name: String {
+        switch reservation.getData() {
+        case .workStation(let workStationData):
+            return workStationData.name
+        case .housing(let housingData):
+            return housingData.name
+        case .vehicle(let vehicleData):
+            return vehicleData.name
+        case .none:
+            return ""
+        }
+    }
+
     var body: some View {
         
         HStack(alignment: .center) {
             
             Button {
-                selectedItem = reservation
+                selectedReservation = reservation
                 showDetail = true
-                print(reservation.price)
+//                print(reservation.price)
 
             } label: {
                 HStack {
-                    ReservationItemImage()
+                    ReservationItemIcon(icon: icon)
                     VStack(alignment: .leading) {
-                        Text(reservation.name)
+                        Text(name)
                             .font(.callout)
                             .fontWeight(.semibold)
-                        Text(reservation.time)
+                        Text(reservation.date)
                             .font(.footnote)
                     }
                     
-                    Text("\(reservation.price)€")
+                    Text("5€")
                         .font(.footnote)
                         .fontWeight(.bold)
                         .frame(width: 40, height: 20)

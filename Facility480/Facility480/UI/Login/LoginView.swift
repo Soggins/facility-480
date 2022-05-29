@@ -40,7 +40,7 @@ struct LoginView: View {
                             .padding()
                             .keyboardType(.emailAddress)
                     
-                        HStack{
+                        HStack {
                             if showPassword{
                                 TextField("Password", text: $viewModel.password)
                                     .textInputAutocapitalization(.never)

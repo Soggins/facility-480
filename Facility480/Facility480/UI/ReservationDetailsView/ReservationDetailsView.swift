@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct ReservationDetailsView: View {
-    let reservation: Reservation
+    @StateObject var viewModel: ReservationDetailsViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
+    var name: String {
+        switch viewModel.reservation!.getData() {
+        case .workStation(let workStationData):
+            return workStationData.name
+        case .housing(let housingData):
+            return housingData.name
+        case .vehicle(let vehicleData):
+            return vehicleData.name
+        default:
+            return " "
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -19,7 +32,7 @@ struct ReservationDetailsView: View {
                 }
                 
                 Group {
-                    Text(reservation.name)
+                    Text(name)
                         .font(.title)
                         .padding(.top, 20)
                         .padding(.bottom, 50)
@@ -27,10 +40,10 @@ struct ReservationDetailsView: View {
                     Group{
                         Text("Details of your reservation:")
                             .fontWeight(.medium)
-                        Text(reservation.name)
+                        Text(name)
                             .fontWeight(.medium)
                             .foregroundColor(.black.opacity(0.5))
-                        Text(reservation.time)
+                        Text(viewModel.reservation!.date)
                             .fontWeight(.light)
                     }
                     .padding(.bottom, 2.5)
@@ -52,7 +65,10 @@ struct ReservationDetailsView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     Menu{
-                        Button("Cancel", action: { self.mode.wrappedValue.dismiss() })
+                        Button("Cancel", action: {
+                            viewModel.deleteReservation()
+                            self.mode.wrappedValue.dismiss()
+                        })
                     } label: {
                     Image(systemName: "ellipsis")
                         .rotationEffect(.degrees(90))
@@ -67,8 +83,8 @@ struct ReservationDetailsView: View {
     }
 }
 
-struct ReservationDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReservationDetailsView(reservation: Reservation(name: "Puesto de trabajo 45", time: "Lunes 31 may. | 8:00 a 17:30", price: 2))
-    }
-}
+//struct ReservationDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReservationDetailsView(reservation: Reservation())
+//    }
+//}

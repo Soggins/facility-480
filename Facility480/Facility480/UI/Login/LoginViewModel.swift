@@ -27,7 +27,7 @@ class LoginViewModel: ObservableObject {
     
     func logIn(){
         userLogIn.execute(user: UserLoginUseCaseParams(username: email, password: password), success: { state in
-            print(state)
+            print("LOGIN: \(state)")
             if state {
                 if let handleOnLogin = self.handleOnLogin {
                     handleOnLogin()

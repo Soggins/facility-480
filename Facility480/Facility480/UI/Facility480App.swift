@@ -44,7 +44,7 @@ struct Facility480App: App {
     
     @ViewBuilder
     private func getHomeView() -> some View {
-        HomeView(viewModel: HomeViewModel())
+        HomeView(viewModel: HomeViewModel(repositories: viewModel.dependencyInjector.repositories))
             .ignoresSafeArea()
             .navigationBarBackButtonHidden(true)
     }

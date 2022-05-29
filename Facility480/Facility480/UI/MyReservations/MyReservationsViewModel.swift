@@ -8,7 +8,10 @@
 import Foundation
 
 class MyReservationsViewModel: ObservableObject {
+    @Published var repositories = DependencyInjector()
     @Published var flowControl: HomeViewsEnum? = nil
+    
+    
     
     let handleOnDetails: (() -> Void)?
     
