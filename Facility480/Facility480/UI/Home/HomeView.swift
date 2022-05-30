@@ -7,15 +7,12 @@
 
 import SwiftUI
 
-enum HomeViewsEnum: Hashable, CaseIterable, Identifiable {
+
+enum HomeViewsEnum: Hashable, Identifiable {
 
     case makeReservation, myReservations, reservationDetails, settings
     
     var id: String {
-        self.getName()
-    }
-    
-    func getName() -> String {
         switch self {
         case .makeReservation:
             return "makeReservation"
@@ -30,13 +27,23 @@ enum HomeViewsEnum: Hashable, CaseIterable, Identifiable {
 }
 
 struct HomeView: View {
+    
     @StateObject var viewModel: HomeViewModel
     @State var searchbar = ""
-    @State var selectedReservation: Reservation?
-    @State private var showDetail = false
     
     //when optional currentReservations = nil
     let emptyReservations: [Reservation] = []
+    
+//    var timeUntilNextReservation: String {
+//        let todayDate = Date.now
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "mm.dd.yy"
+//        let nextReservationDate = dateFormatter.date(from: viewModel.nextReservation!.date)
+//
+//        
+//        return ""
+//    }
+    
     
     
     private func activeLink() -> Binding<HomeViewsEnum?> {
@@ -51,9 +58,7 @@ struct HomeView: View {
     private var navigationLinks: some View {
         NavigationLink(tag: HomeViewsEnum.myReservations, selection: activeLink(),
                destination: {
-            MyReservationsView(viewModel: MyReservationsViewModel(handleOnDetails: {
-                viewModel.handleOnDetails()
-            }))
+            MyReservationsView(viewModel: MyReservationsViewModel(currentReservations: viewModel.currentReservations ?? emptyReservations))
 //                .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)
         },
@@ -62,9 +67,16 @@ struct HomeView: View {
         })
         NavigationLink(tag: HomeViewsEnum.reservationDetails, selection: activeLink(),
                destination: {
-            ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: selectedReservation!, repositories: viewModel.repositories.repositories))
+            ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: viewModel.selectedReservation!, repositories: viewModel.repositories.repositories, onDismiss: {
+                viewModel.flowControl = nil
+                viewModel.selectedReservation = nil
+            }))
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)
+                .onDisappear{
+                    viewModel.flowControl = nil
+                    viewModel.selectedReservation = nil
+                }
         },
                label: {
                     EmptyView()
@@ -130,14 +142,21 @@ struct HomeView: View {
                             
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 20) {
-                                    ForEach(0..<10) { number in
-                                        Button {
+                                    Group {
+                                        Button{
+                                            
                                         } label: {
-                                        ReservationItemButton(facilityName: "Vehicle")
-                                            .padding(.leading, UIScreen.main.bounds.width * 0.075)
-                                            .padding(.trailing, number == 9 ? UIScreen.main.bounds.width * 0.075 : 0)
+                                            ReservationItemButton(facilityName: "workstation")
                                         }
+                                        Button{ } label: {
+                                            ReservationItemButton(facilityName: "housing")
+                                        }
+                                        Button{ } label: {
+                                            ReservationItemButton(facilityName: "vehicle")
+                                        }
+                                            .padding(.trailing, 33)
                                     }
+                                    .padding(.leading, 33)
                                 }
                             }
 
@@ -170,7 +189,7 @@ struct HomeView: View {
                     
                     if viewModel.nextReservation != nil {
                         Button {
-                            selectedReservation = viewModel.nextReservation
+                            viewModel.selectedReservation = viewModel.nextReservation
                             viewModel.handleOnDetails()
                         } label: {
                             ZStack {
@@ -182,7 +201,7 @@ struct HomeView: View {
                                         VStack {
                                             Text("Próxima reserva en 0d 3h 29m")
                                                 .fontWeight(.bold)
-                                            Text("\(viewModel.nextReservation?.date ?? "null") \(viewModel.nextReservation?.reservation_id ?? "null")")
+                                            Text("\(viewModel.nextReservation?.date ?? "null") \(viewModel.nextReservation?.getName() ?? "error")")
                                         }
                                         .foregroundColor(.black)
                                         Spacer()
@@ -210,12 +229,21 @@ struct HomeView: View {
                     List {
                         ForEach(viewModel.currentReservations ?? emptyReservations, id: \.self) { reservationlist in
                             Button {
-                                viewModel.handleOnDetails()
+                                
                             } label: {
-                                ReservationItem(reservation: reservationlist, selectedReservation: $selectedReservation, showDetail: $showDetail)
+                                ReservationItem(reservation: reservationlist, selectedReservation: $viewModel.selectedReservation)
+                                
                             }
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
                         }
                     }
+                    .onChange(of: viewModel.selectedReservation, perform: { reservation in
+                        if let _ = reservation {
+                            viewModel.handleOnDetails()
+                        }
+                    })
+                    .listStyle(PlainListStyle())
                     
                     
                     
@@ -224,7 +252,6 @@ struct HomeView: View {
                 .onAppear(){
                     viewModel.getNextReservation()
                     viewModel.getCurrentReservations()
-                    print("HOME!!!!!!!!!!!!!!!!!")
                 }
                 .toolbar{
                     ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarLeading){

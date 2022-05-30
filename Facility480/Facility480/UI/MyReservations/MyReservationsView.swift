@@ -7,7 +7,17 @@
 
 import SwiftUI
 
+enum MyReservationsViewsEnum: Hashable, Identifiable {
 
+    case reservationDetails
+    
+    var id: String {
+        switch self {
+        case .reservationDetails:
+            return "reservationDetails"
+        }
+    }
+}
 
 enum MyReservationsTabEnum: Hashable, CaseIterable{
     case current, history
@@ -31,12 +41,32 @@ struct MyReservationsView: View {
     
     @State private var selectedTab: MyReservationsTabEnum = .current
     
-    @State var selectedItem: Reservation?
-    @State var showDetail = false
+    @State var selectedReservation: Reservation?
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    private func activeLink() -> Binding<MyReservationsViewsEnum?> {
+        return Binding(get: {
+            return viewModel.myReservationsFlowControl
+        }, set: {
+            viewModel.myReservationsFlowControl = $0
+        })
+    }
     
+    @ViewBuilder
+    private var navigationLinks: some View {
+        NavigationLink(tag: MyReservationsViewsEnum.reservationDetails, selection: activeLink(), destination: {
+                        ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: selectedReservation!, repositories: viewModel.repositories.repositories, onDismiss: {
+        selectedReservation = nil}))
+                .ignoresSafeArea()
+                .navigationBarBackButtonHidden(true)
+                .onDisappear{
+                    selectedReservation = nil
+                }
+        }, label: {
+        EmptyView()
+        })
+    }
 
     var body: some View {
             ZStack {
@@ -47,7 +77,7 @@ struct MyReservationsView: View {
                     
                     TabView(selection: $selectedTab,
                         content: {
-                        MyReservationsTab_Current(selectedItem: $selectedItem, showDetail: $showDetail)
+                        MyReservationsTab_Current(viewModel: viewModel, selectedReservation: $selectedReservation, reservations: viewModel.currentReservations)
                             .tag(MyReservationsTabEnum.current)
                             MyReservationsTab_History()
                             .tag(MyReservationsTabEnum.history)
@@ -85,15 +115,7 @@ struct MyReservationsView: View {
                         
                     }
                 }
-                NavigationLink(destination:
-                                ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: selectedItem!, repositories: viewModel.repositories.repositories))
-                        .ignoresSafeArea()
-                        .navigationBarBackButtonHidden(true)
-                
-                , isActive: $showDetail,
-                               label: {
-                EmptyView()
-                })
+                navigationLinks
             }
             .navigationBarTitleDisplayMode(.inline)
             
@@ -101,8 +123,8 @@ struct MyReservationsView: View {
     }
 }
 
-struct MyReservationsView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyReservationsView(viewModel: MyReservationsViewModel())
-    }
-}
+//struct MyReservationsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyReservationsView(viewModel: MyReservationsViewModel())
+//    }
+//}

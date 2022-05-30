@@ -14,10 +14,21 @@ class ReservationDetailsViewModel: ObservableObject {
     
     let deleteReservationUseCase: DeleteReservationUseCase
     
-    init(reservation: Reservation, repositories: DependencyInjector.Repositories) {
+    let onDismiss: (() -> Void)?
+    
+    init(reservation: Reservation, repositories: DependencyInjector.Repositories, onDismiss: (() -> Void)?) {
         self.reservation = reservation
         self.deleteReservationUseCase = DeleteReservationUseCase(reservationRepository: repositories.reservationRepository)
+        self.onDismiss = onDismiss
     }
+    
+    func onDismissView() {
+        if let onDismiss = onDismiss {
+            onDismiss()
+        }
+    }
+    
+    
     
     public func deleteReservation() {
         

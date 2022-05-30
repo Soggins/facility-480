@@ -10,18 +10,16 @@ import Foundation
 class MyReservationsViewModel: ObservableObject {
     @Published var repositories = DependencyInjector()
     @Published var flowControl: HomeViewsEnum? = nil
+    @Published var myReservationsFlowControl: MyReservationsViewsEnum? = nil
+    
+    @Published var currentReservations: [Reservation]
     
     
-    
-    let handleOnDetails: (() -> Void)?
-    
-    init(handleOnDetails: (() -> Void)? = nil) {
-        self.handleOnDetails = handleOnDetails
+    init(currentReservations: [Reservation]) {
+        self.currentReservations = currentReservations
     }
     
     func toDetails(){
-        if let handleOnDetails = handleOnDetails {
-            handleOnDetails()
-        }
+        myReservationsFlowControl = .reservationDetails
     }
 }

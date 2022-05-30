@@ -8,24 +8,32 @@
 import SwiftUI
 
 struct MyReservationsTab_Current: View {
-    @Binding var selectedItem: Reservation?
+    @StateObject var viewModel: MyReservationsViewModel
     
+    @Binding var selectedReservation: Reservation?
     
-//    let reservations : Reservations
-    
-    @Binding var showDetail: Bool
+    let reservations : [Reservation]
+
     
     var body: some View {
-        List{
-//            VStack(spacing: 5) {
-//                ForEach(reservations, id: \.self) { reservation in
-//                    ReservationItem(reservation: reservation, selectedItem: $selectedItem, showDetail: $showDetail)
-//                }
-//            }
-        
+        List {
+            ForEach(reservations, id: \.self) { reservationlist in
+                Button {
+                    
+                } label: {
+                    ReservationItem(reservation: reservationlist, selectedReservation: $selectedReservation)
+                    
+                }
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)
+            }
         }
-        .listStyle(.plain)
-        .padding(.top, 10)
+        .onChange(of: selectedReservation, perform: { reservation in
+            if let _ = reservation {
+                viewModel.toDetails()
+            }
+        })
+        .listStyle(PlainListStyle())
         
     }
 }

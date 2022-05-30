@@ -10,32 +10,6 @@ import SwiftUI
 struct ReservationItem: View {
     var reservation: Reservation
     @Binding var selectedReservation: Reservation?
-    @Binding var showDetail: Bool
-    
-    var icon: String{
-        switch reservation.getData() {
-        case .workStation:
-            return "workspaceicon"
-        case .housing:
-            return "housingicon"
-        case .vehicle:
-            return "vehicleicon"
-        case .none:
-            return ""
-        }
-    }
-    var name: String {
-        switch reservation.getData() {
-        case .workStation(let workStationData):
-            return workStationData.name
-        case .housing(let housingData):
-            return housingData.name
-        case .vehicle(let vehicleData):
-            return vehicleData.name
-        case .none:
-            return ""
-        }
-    }
 
     var body: some View {
         
@@ -43,14 +17,12 @@ struct ReservationItem: View {
             
             Button {
                 selectedReservation = reservation
-                showDetail = true
-//                print(reservation.price)
 
             } label: {
                 HStack {
-                    ReservationItemIcon(icon: icon)
+                    ReservationItemIcon(icon: reservation.getIcon())
                     VStack(alignment: .leading) {
-                        Text(name)
+                        Text(reservation.getName())
                             .font(.callout)
                             .fontWeight(.semibold)
                         Text(reservation.date)
@@ -80,9 +52,8 @@ struct ReservationItem: View {
                 .foregroundColor(.black.opacity(0.2))
                 .frame(width: 30, height: 30)
             }
-            .background(Color.red)
         }
-//        .frame(height: UIScreen.main.bounds.height * 0.105)
+        .frame(height: 60)
 //        .onTapGesture {
 //            print(selectedItem)
 //            showDetail = true

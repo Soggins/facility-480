@@ -11,26 +11,21 @@ struct ReservationItemButton: View {
     var facilityName: String
     
     var body: some View {
-        Button {
-            
-        } label: {
-            VStack {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .frame(width: 72, height: 72)
-                        .foregroundColor(.green)
+        VStack {
+            ZStack {
+                RoundedRectangle(cornerRadius: 25, style: .continuous)
+                    .frame(width: 72, height: 72)
+                    .foregroundColor(.green)
+                
+                Image("\(facilityName)icon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 33, height: 33)
                     
-                    Image("vehicleicon")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 33, height: 33)
-                        
-                }
-                
-                Text(facilityName)
-                    .foregroundColor(.white)
-                
             }
+            
+            Text(facilityName.capitalized)
+                .foregroundColor(.white)
         }
     }
 }

@@ -21,7 +21,7 @@ public protocol ReservationProtocol: Codable, Hashable {
     var type: String { get  }
 }
 
-public enum ReservationType : Codable {
+public enum ReservationType : Codable, CaseIterable {
     case workstation
     case housing
     case vehicle
@@ -86,6 +86,32 @@ struct Reservation: ReservationProtocol {
             return .vehicle(vehicle!)
         default:
             return nil
+        }
+    }
+    
+    func getName() -> String {
+        switch getData() {
+        case .workStation(let workStationData):
+            return workStationData.name
+        case .housing(let housingData):
+            return housingData.name
+        case .vehicle(let vehicleData):
+            return vehicleData.name
+        case .none:
+            return ""
+        }
+    }
+    
+    func getIcon() -> String{
+        switch getData() {
+        case .workStation:
+            return "workstationicon"
+        case .housing:
+            return "housingicon"
+        case .vehicle:
+            return "vehicleicon"
+        case .none:
+            return ""
         }
     }
 }

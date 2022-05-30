@@ -10,18 +10,22 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var flowControl: HomeViewsEnum? = nil
     @Published var repositories = DependencyInjector()
-    @Published var toAllReservations: Bool = false
     
     @Published var nextReservation: Reservation?
     @Published var currentReservations: [Reservation]?
     
+    @Published var selectedReservation: Reservation?
+    
     let nextReservationUseCase: GetNextReservationUseCase
     let currentReservationsUseCase: GetCurrentReservationsUseCase
+    
+//    let onSelectedReservation: ((Reservation) -> Void)?
     
     
     init(repositories: DependencyInjector.Repositories) {
         self.nextReservationUseCase = GetNextReservationUseCase(reservationRepository: repositories.reservationRepository)
         self.currentReservationsUseCase = GetCurrentReservationsUseCase(reservationRepository: repositories.reservationRepository)
+        
     }
     
     func handleOnViewAll() {

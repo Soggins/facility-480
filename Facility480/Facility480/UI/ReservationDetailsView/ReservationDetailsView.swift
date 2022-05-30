@@ -11,18 +11,6 @@ struct ReservationDetailsView: View {
     @StateObject var viewModel: ReservationDetailsViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    var name: String {
-        switch viewModel.reservation!.getData() {
-        case .workStation(let workStationData):
-            return workStationData.name
-        case .housing(let housingData):
-            return housingData.name
-        case .vehicle(let vehicleData):
-            return vehicleData.name
-        default:
-            return " "
-        }
-    }
     
     var body: some View {
         ZStack {
@@ -32,7 +20,7 @@ struct ReservationDetailsView: View {
                 }
                 
                 Group {
-                    Text(name)
+                    Text((viewModel.reservation?.getName()) ?? "error")
                         .font(.title)
                         .padding(.top, 20)
                         .padding(.bottom, 50)
@@ -40,7 +28,7 @@ struct ReservationDetailsView: View {
                     Group{
                         Text("Details of your reservation:")
                             .fontWeight(.medium)
-                        Text(name)
+                        Text((viewModel.reservation?.getName()) ?? "error")
                             .fontWeight(.medium)
                             .foregroundColor(.black.opacity(0.5))
                         Text(viewModel.reservation!.date)
@@ -54,7 +42,7 @@ struct ReservationDetailsView: View {
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading){
-                    Button(action: { self.mode.wrappedValue.dismiss() }) {
+                    Button(action: { viewModel.onDismiss!() }) {
                         Image(systemName: "arrow.left")
                             .frame(width: 40, height: 40)
                             .foregroundColor(.black)
@@ -67,7 +55,7 @@ struct ReservationDetailsView: View {
                     Menu{
                         Button("Cancel", action: {
                             viewModel.deleteReservation()
-                            self.mode.wrappedValue.dismiss()
+                            viewModel.onDismiss!()
                         })
                     } label: {
                     Image(systemName: "ellipsis")
