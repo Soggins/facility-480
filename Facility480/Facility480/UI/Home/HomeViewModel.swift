@@ -13,11 +13,13 @@ class HomeViewModel: ObservableObject {
     
     @Published var nextReservation: Reservation?
     @Published var currentReservations: [Reservation]?
+    @Published var pastReservations: [Reservation]?
     
     @Published var selectedReservation: Reservation?
     
     let nextReservationUseCase: GetNextReservationUseCase
     let currentReservationsUseCase: GetCurrentReservationsUseCase
+    let pastReservationsUseCase: GetPastReservationUseCase
     
 //    let onSelectedReservation: ((Reservation) -> Void)?
     
@@ -25,7 +27,7 @@ class HomeViewModel: ObservableObject {
     init(repositories: DependencyInjector.Repositories) {
         self.nextReservationUseCase = GetNextReservationUseCase(reservationRepository: repositories.reservationRepository)
         self.currentReservationsUseCase = GetCurrentReservationsUseCase(reservationRepository: repositories.reservationRepository)
-        
+        self.pastReservationsUseCase = GetPastReservationUseCase(reservationRepository: repositories.reservationRepository)
     }
     
     func handleOnViewAll() {
@@ -58,6 +60,17 @@ class HomeViewModel: ObservableObject {
             switch result {
             case .success(let reservations):
                 self.currentReservations = reservations
+            case .failure(let error):
+                print(error)
+            }
+        })
+    }
+    
+    public func getPastReservations() {
+        pastReservationsUseCase.execute(completion: { result in
+            switch result {
+            case .success(let reservations):
+                self.pastReservations = reservations
             case .failure(let error):
                 print(error)
             }

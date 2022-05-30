@@ -13,10 +13,12 @@ class MyReservationsViewModel: ObservableObject {
     @Published var myReservationsFlowControl: MyReservationsViewsEnum? = nil
     
     @Published var currentReservations: [Reservation]
+    @Published var pastReserations: [Reservation]
     
     
-    init(currentReservations: [Reservation]) {
+    init(currentReservations: [Reservation], pastReservations: [Reservation]) {
         self.currentReservations = currentReservations
+        self.pastReserations = pastReservations
     }
     
     func toDetails(){

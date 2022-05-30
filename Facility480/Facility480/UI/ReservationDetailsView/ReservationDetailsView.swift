@@ -42,7 +42,10 @@ struct ReservationDetailsView: View {
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading){
-                    Button(action: { viewModel.onDismiss!() }) {
+                    Button(action: {
+//                        viewModel.onDismiss!()
+                        self.mode.wrappedValue.dismiss()
+                    }) {
                         Image(systemName: "arrow.left")
                             .frame(width: 40, height: 40)
                             .foregroundColor(.black)
@@ -55,7 +58,8 @@ struct ReservationDetailsView: View {
                     Menu{
                         Button("Cancel", action: {
                             viewModel.deleteReservation()
-                            viewModel.onDismiss!()
+//                            viewModel.onDismiss!()
+                            self.mode.wrappedValue.dismiss()
                         })
                     } label: {
                     Image(systemName: "ellipsis")

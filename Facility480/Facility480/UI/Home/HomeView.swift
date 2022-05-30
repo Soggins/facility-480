@@ -58,7 +58,7 @@ struct HomeView: View {
     private var navigationLinks: some View {
         NavigationLink(tag: HomeViewsEnum.myReservations, selection: activeLink(),
                destination: {
-            MyReservationsView(viewModel: MyReservationsViewModel(currentReservations: viewModel.currentReservations ?? emptyReservations))
+            MyReservationsView(viewModel: MyReservationsViewModel(currentReservations: viewModel.currentReservations ?? emptyReservations, pastReservations: viewModel.pastReservations ?? emptyReservations))
 //                .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)
         },
@@ -252,6 +252,7 @@ struct HomeView: View {
                 .onAppear(){
                     viewModel.getNextReservation()
                     viewModel.getCurrentReservations()
+                    viewModel.getPastReservations()
                 }
                 .toolbar{
                     ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarLeading){

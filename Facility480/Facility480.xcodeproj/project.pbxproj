@@ -40,6 +40,7 @@
 		12AB165A2840ED01003380FD /* DeleteReservationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB16592840ED01003380FD /* DeleteReservationUseCase.swift */; };
 		12AB165C2842EB8C003380FD /* GetCurrentReservationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB165B2842EB8C003380FD /* GetCurrentReservationsUseCase.swift */; };
 		12AB16612843CE36003380FD /* MakeReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB16602843CE36003380FD /* MakeReservationView.swift */; };
+		12AB16632845145C003380FD /* GetPastReservationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB16622845145C003380FD /* GetPastReservationsUseCase.swift */; };
 		12B442EB282A723C00AB5BF6 /* EnvironmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B442EA282A723C00AB5BF6 /* EnvironmentView.swift */; };
 		12B442F0282A7E1000AB5BF6 /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B442EF282A7E1000AB5BF6 /* CompanyView.swift */; };
 		12BA6B45281958CF00D44482 /* ReservationItemIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA6B44281958CF00D44482 /* ReservationItemIcon.swift */; };
@@ -83,6 +84,7 @@
 		12AB16592840ED01003380FD /* DeleteReservationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReservationUseCase.swift; sourceTree = "<group>"; };
 		12AB165B2842EB8C003380FD /* GetCurrentReservationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentReservationsUseCase.swift; sourceTree = "<group>"; };
 		12AB16602843CE36003380FD /* MakeReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeReservationView.swift; sourceTree = "<group>"; };
+		12AB16622845145C003380FD /* GetPastReservationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPastReservationsUseCase.swift; sourceTree = "<group>"; };
 		12B442EA282A723C00AB5BF6 /* EnvironmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentView.swift; sourceTree = "<group>"; };
 		12B442EF282A7E1000AB5BF6 /* CompanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
 		12BA6B44281958CF00D44482 /* ReservationItemIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationItemIcon.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				12AB1655283FDAA5003380FD /* GetNextReservationUseCase.swift */,
 				12AB165B2842EB8C003380FD /* GetCurrentReservationsUseCase.swift */,
 				12AB16592840ED01003380FD /* DeleteReservationUseCase.swift */,
+				12AB16622845145C003380FD /* GetPastReservationsUseCase.swift */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				12A178982833ADEE0033622A /* MainViewModel.swift in Sources */,
 				12A6D67E2823E0670029E0B4 /* ReservationDetailsView.swift in Sources */,
 				12BA6B45281958CF00D44482 /* ReservationItemIcon.swift in Sources */,
+				12AB16632845145C003380FD /* GetPastReservationsUseCase.swift in Sources */,
 				12A6D6772823D10E0029E0B4 /* MyReservationsTab-History.swift in Sources */,
 				12A1502328252D2A008B453E /* Reservation.swift in Sources */,
 				1206E9A728042A1C0096C29C /* Facility480App.swift in Sources */,

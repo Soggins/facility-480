@@ -9,8 +9,20 @@ import Foundation
 import Alamofire
 
 class ReservationDataSource: ReservationRepository {
-    func listPastReservations(parent: String, completion: @escaping ((Result<[Reservation], DataSourceError>)) -> Void) {
+    func getPastReservations(parent: String, completion: @escaping ((Result<[Reservation], DataSourceError>)) -> Void) {
+        let header = getHeader(token: getToken())
         
+        
+        AF.request(parent, method: .get, headers: header).validate(statusCode: 200...299).responseDecodable(of: [Reservation].self) { response in
+            
+            if let listReservations = response.value {
+                print("PAST RESERVATIONS: \(listReservations)")
+                completion(.success(listReservations))
+            } else {
+                completion(.failure(DataSourceError.firstError))
+            }
+        
+        }
     }
     
     func getCurrentReservations(parent: String, completion: @escaping ((Result<[Reservation], DataSourceError>)) -> Void) {
@@ -20,7 +32,7 @@ class ReservationDataSource: ReservationRepository {
         AF.request(parent, method: .get, headers: header).validate(statusCode: 200...299).responseDecodable(of: [Reservation].self) { response in
             
             if let listReservations = response.value {
-                print(listReservations)
+//                print(listReservations)
                 completion(.success(listReservations))
             } else {
                 completion(.failure(DataSourceError.firstError))
@@ -33,7 +45,7 @@ class ReservationDataSource: ReservationRepository {
         let header = getHeader(token: getToken())
         
         AF.request(parent, method: .get, headers: header).validate(statusCode: 200...299).responseDecodable(of: Reservation.self) { response in
-            print("NEXT RESERVATION: \(response.value as Any)")
+//            print("NEXT RESERVATION: \(response.value as Any)")
             
             if let nextReservationInfo = response.value {
                 completion(.success(nextReservationInfo))
@@ -49,7 +61,7 @@ class ReservationDataSource: ReservationRepository {
         
         AF.request(parent, method: .delete, parameters: id, headers: header).validate(statusCode: 200...299).response { response in
             print("\(response.value as Any) delete response")
-            print("DELETE URL: \(response.request)")
+            print("DELETE URL: \(String(describing: response.request))")
             if let error = response.error {
                 print("\(error) DELETE ERROR")
                 success(false)

@@ -56,7 +56,7 @@ struct MyReservationsView: View {
     @ViewBuilder
     private var navigationLinks: some View {
         NavigationLink(tag: MyReservationsViewsEnum.reservationDetails, selection: activeLink(), destination: {
-                        ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: selectedReservation!, repositories: viewModel.repositories.repositories, onDismiss: {
+                        ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: selectedReservation ?? Reservation(reservation_id: "error", date: "error", type: "error"), repositories: viewModel.repositories.repositories, onDismiss: {
         selectedReservation = nil}))
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)
@@ -79,7 +79,7 @@ struct MyReservationsView: View {
                         content: {
                         MyReservationsTab_Current(viewModel: viewModel, selectedReservation: $selectedReservation, reservations: viewModel.currentReservations)
                             .tag(MyReservationsTabEnum.current)
-                            MyReservationsTab_History()
+                        MyReservationsTab_History(viewModel: viewModel, selectedReservation: $selectedReservation, reservations: viewModel.pastReserations)
                             .tag(MyReservationsTabEnum.history)
                         })
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))

@@ -8,23 +8,38 @@
 import SwiftUI
 
 struct MyReservationsTab_History: View {
+    @StateObject var viewModel: MyReservationsViewModel
+    
+    @Binding var selectedReservation: Reservation?
+    
+    let reservations : [Reservation]
+
+    
     var body: some View {
-        ScrollView{
-            VStack(spacing: 5) {
-//                ForEach(0..<20) { number in
-//                    ReservationItem()
-//                        .padding(.horizontal)
-//                        .padding(.bottom, number == 19 ? 2 : 0)
-//                }
+        List {
+            ForEach(reservations, id: \.self) { reservationlist in
+                Button {
+                    
+                } label: {
+                    ReservationItem(reservation: reservationlist, selectedReservation: $selectedReservation)
+                    
+                }
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)
             }
-        
         }
-        .padding(.top, 10)
+        .onChange(of: selectedReservation, perform: { reservation in
+            if let _ = reservation {
+                viewModel.toDetails()
+            }
+        })
+        .listStyle(PlainListStyle())
+        
     }
 }
 
-struct MyReservationsTab_History_Previews: PreviewProvider {
-    static var previews: some View {
-        MyReservationsTab_History()
-    }
-}
+//struct MyReservationsTab_History_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyReservationsTab_History()
+//    }
+//}
