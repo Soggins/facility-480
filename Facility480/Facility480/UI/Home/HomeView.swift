@@ -76,7 +76,7 @@ struct HomeView: View {
                 .onDisappear{
                     viewModel.flowControl = nil
                     viewModel.selectedReservation = nil
-                    initializeView()
+                    reloadReservations()
                 }
         },
                label: {
@@ -253,6 +253,9 @@ struct HomeView: View {
                             viewModel.handleOnDetails()
                         }
                     })
+                    .onChange(of: viewModel.currentReservations, perform: { reservation in
+                        viewModel.getNextReservation()
+                    })
                     .listStyle(PlainListStyle())
                     
                     
@@ -260,7 +263,7 @@ struct HomeView: View {
                     Spacer()
                 }
                 .onAppear(){
-                    initializeView()
+                    reloadReservations()
                 }
                 .toolbar{
                     ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarLeading){
@@ -295,7 +298,7 @@ struct HomeView: View {
     
     }
     
-    private func initializeView() {
+    private func reloadReservations() {
         viewModel.getNextReservation()
         viewModel.getCurrentReservations()
         viewModel.getPastReservations()
