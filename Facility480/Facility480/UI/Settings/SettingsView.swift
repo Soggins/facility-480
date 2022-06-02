@@ -21,9 +21,8 @@ struct SettingsView: View {
                         .resizable()
                     
                     VStack {
-                        Circle()
-                            .fill()
-                            .foregroundColor(.blue)
+                        Image("userprofilepic")
+                            .resizable()
                             .frame(width: 100, height: 100)
                         Text("Héctor Martín Fernández")
                             .foregroundColor(.white)
@@ -96,7 +95,7 @@ struct SettingsView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     Menu{
-                        Button("Cancel", action: { self.mode.wrappedValue.dismiss() })
+                        Button("Cerrar sesión", action: { self.mode.wrappedValue.dismiss() })
                     } label: {
                     Image(systemName: "ellipsis")
                         .rotationEffect(.degrees(90))

@@ -16,7 +16,7 @@ class ReservationDataSource: ReservationRepository {
         AF.request(parent, method: .get, headers: header).validate(statusCode: 200...299).responseDecodable(of: [Reservation].self) { response in
             
             if let listReservations = response.value {
-                print("PAST RESERVATIONS: \(listReservations)")
+//                print("PAST RESERVATIONS: \(listReservations)")
                 completion(.success(listReservations))
             } else {
                 completion(.failure(DataSourceError.firstError))

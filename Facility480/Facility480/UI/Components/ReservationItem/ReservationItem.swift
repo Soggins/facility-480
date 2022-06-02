@@ -25,16 +25,10 @@ struct ReservationItem: View {
                         Text(reservation.getName())
                             .font(.callout)
                             .fontWeight(.semibold)
-                        Text(reservation.date)
+                        Text(reservation.date.replacingOccurrences(of: ".", with: "/"))
                             .font(.footnote)
                     }
                     
-                    Text("5€")
-                        .font(.footnote)
-                        .fontWeight(.bold)
-                        .frame(width: 40, height: 20)
-                        .background(RoundedRectangle(cornerRadius: 15, style: .continuous).fill(.gray.opacity(0.1)))
-                        .padding(.bottom, 15)
                     
                         Spacer()
                         

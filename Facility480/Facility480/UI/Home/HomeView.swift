@@ -201,7 +201,7 @@ struct HomeView: View {
                                         VStack {
                                             Text("Próxima reserva en 0d 3h 29m")
                                                 .fontWeight(.bold)
-                                            Text("\(viewModel.nextReservation?.date ?? "null") \(viewModel.nextReservation?.getName() ?? "error")")
+                                            Text("\(viewModel.nextReservation?.date.replacingOccurrences(of: ".", with: "/") ?? "null") \(viewModel.nextReservation?.getName() ?? "error")")
                                         }
                                         .foregroundColor(.black)
                                         Spacer()
@@ -224,6 +224,7 @@ struct HomeView: View {
                             }
                             .frame(width: UIScreen.main.bounds.width * 0.915, height: UIScreen.main.bounds.height * 0.101)
                         }
+                        .padding(.bottom, 5)
                     }
                     
                     List {
@@ -265,10 +266,9 @@ struct HomeView: View {
                         Button{
                             viewModel.handleOnSettings()
                         } label: {
-                            Circle()
-                                    .fill()
-                                    .foregroundColor(.blue)
-                                    .padding(.horizontal)
+                            Image("userprofilepic")
+                                .resizable()
+                                .frame(width: 40, height: 40)
                         }
                     }
                     

@@ -31,7 +31,7 @@ struct ReservationDetailsView: View {
                         Text((viewModel.reservation?.getName()) ?? "error")
                             .fontWeight(.medium)
                             .foregroundColor(.black.opacity(0.5))
-                        Text(viewModel.reservation!.date)
+                        Text(viewModel.reservation!.date.replacingOccurrences(of: ".", with: "/"))
                             .fontWeight(.light)
                     }
                     .padding(.bottom, 2.5)

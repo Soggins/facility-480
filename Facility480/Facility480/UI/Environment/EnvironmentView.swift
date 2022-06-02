@@ -49,10 +49,10 @@ struct EnvironmentView: View {
                                 showPopUp = true
                             }
                         } label: {
-                            Circle()
-                                .fill()
-                                .foregroundColor(.blue)
-                                .padding(.horizontal)
+                            Image("unknownuserprofilepic")
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                                .padding(.horizontal, 10)
                         }
                         
                     }
