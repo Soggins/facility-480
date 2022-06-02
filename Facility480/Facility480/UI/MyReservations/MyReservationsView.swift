@@ -79,9 +79,9 @@ struct MyReservationsView: View {
                     
                     TabView(selection: $selectedTab,
                         content: {
-                        MyReservationsTab_Current(viewModel: viewModel, selectedReservation: $selectedReservation, reservations: viewModel.currentReservations)
+                        MyReservationsTab(viewModel: viewModel, selectedReservation: $selectedReservation, reservations: viewModel.currentReservations)
                             .tag(MyReservationsTabEnum.current)
-                        MyReservationsTab_History(viewModel: viewModel, selectedReservation: $selectedReservation, reservations: viewModel.pastReserations)
+                        MyReservationsTab(viewModel: viewModel, selectedReservation: $selectedReservation, reservations: viewModel.pastReserations)
                             .tag(MyReservationsTabEnum.history)
                         })
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))

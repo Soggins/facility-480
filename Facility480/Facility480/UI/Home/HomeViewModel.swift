@@ -20,6 +20,7 @@ class HomeViewModel: ObservableObject {
     let nextReservationUseCase: GetNextReservationUseCase
     let currentReservationsUseCase: GetCurrentReservationsUseCase
     let pastReservationsUseCase: GetPastReservationUseCase
+    let deleteReservationUseCase: DeleteReservationUseCase
     
 //    let onSelectedReservation: ((Reservation) -> Void)?
     
@@ -28,6 +29,7 @@ class HomeViewModel: ObservableObject {
         self.nextReservationUseCase = GetNextReservationUseCase(reservationRepository: repositories.reservationRepository)
         self.currentReservationsUseCase = GetCurrentReservationsUseCase(reservationRepository: repositories.reservationRepository)
         self.pastReservationsUseCase = GetPastReservationUseCase(reservationRepository: repositories.reservationRepository)
+        self.deleteReservationUseCase = DeleteReservationUseCase(reservationRepository: repositories.reservationRepository)
     }
     
     func handleOnViewAll() {
@@ -79,6 +81,25 @@ class HomeViewModel: ObservableObject {
                 print(error)
             }
         })
+    }
+    
+    public func deleteReservation(_ reservation: Reservation) {
+        
+        deleteReservationUseCase.execute(success: { [self] state in
+            print("DELETE: \(state)")
+            
+            if state {
+                print("WAS DELETED: \(reservation)")
+                
+                if currentReservations != nil {
+                    if let index = currentReservations!.firstIndex(of: reservation) {
+                        currentReservations?.remove(at: index)
+                    }
+                }
+
+                
+            }
+        }, id: reservation.reservation_id)
     }
     
     

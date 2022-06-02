@@ -10,6 +10,8 @@ import SwiftUI
 struct ReservationItem: View {
     var reservation: Reservation
     @Binding var selectedReservation: Reservation?
+    
+    var action: (() -> Void)
 
     var body: some View {
         
@@ -55,7 +57,10 @@ struct ReservationItem: View {
         
     }
     
-    func cancel() { }
+    func cancel() {
+        action()
+        
+    }
 }
 
 //struct ReservationItem_Previews: PreviewProvider {

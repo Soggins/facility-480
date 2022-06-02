@@ -235,11 +235,13 @@ struct HomeView: View {
                     }
                     
                     List {
-                        ForEach(viewModel.currentReservations ?? emptyReservations, id: \.self) { reservationlist in
+                        ForEach(viewModel.currentReservations ?? emptyReservations, id: \.self) { reservation in
                             Button {
                                 
                             } label: {
-                                ReservationItem(reservation: reservationlist, selectedReservation: $viewModel.selectedReservation)
+                                ReservationItem(reservation: reservation, selectedReservation: $viewModel.selectedReservation, action: {
+                                    viewModel.deleteReservation(reservation)
+                                })
                                 
                             }
                             .listRowSeparator(.hidden)

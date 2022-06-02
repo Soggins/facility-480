@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyReservationsTab_Current: View {
+struct MyReservationsTab: View {
     @StateObject var viewModel: MyReservationsViewModel
     
     @Binding var selectedReservation: Reservation?
@@ -21,7 +21,7 @@ struct MyReservationsTab_Current: View {
                 Button {
                     
                 } label: {
-                    ReservationItem(reservation: reservationlist, selectedReservation: $selectedReservation)
+                    ReservationItem(reservation: reservationlist, selectedReservation: $selectedReservation, action: {})
                     
                 }
                 .listRowSeparator(.hidden)
