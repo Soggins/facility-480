@@ -17,11 +17,13 @@ struct MyReservationsTab: View {
     
     var body: some View {
         List {
-            ForEach(reservations, id: \.self) { reservationlist in
+            ForEach(reservations, id: \.self) { reservation in
                 Button {
                     
                 } label: {
-                    ReservationItem(reservation: reservationlist, selectedReservation: $selectedReservation, action: {})
+                    ReservationItem(reservation: reservation, selectedReservation: $selectedReservation, action: {
+                        viewModel.deleteReservation(reservation)
+                    })
                     
                 }
                 .listRowSeparator(.hidden)

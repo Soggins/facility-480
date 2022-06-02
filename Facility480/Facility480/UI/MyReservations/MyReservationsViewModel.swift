@@ -17,8 +17,8 @@ class MyReservationsViewModel: ObservableObject {
     
     let deleteReservationUseCase: DeleteReservationUseCase
     
-    func handleOnReservationDelete(_ reserve: Reservation) {
-        if let index = currentReservations.firstIndex(of: reserve) {
+    func handleOnReservationDelete(_ reservation: Reservation) {
+        if let index = currentReservations.firstIndex(of: reservation) {
             currentReservations.remove(at: index)
         }
     }
@@ -33,5 +33,22 @@ class MyReservationsViewModel: ObservableObject {
     
     func toDetails(){
         myReservationsFlowControl = .reservationDetails
+    }
+    
+    public func deleteReservation(_ reservation: Reservation) {
+        
+        deleteReservationUseCase.execute(success: { [self] state in
+            print("DELETE: \(state)")
+            
+            if state {
+                print("WAS DELETED: \(reservation)")
+                
+                if let index = currentReservations.firstIndex(of: reservation) {
+                    currentReservations.remove(at: index)
+                }
+
+                
+            }
+        }, id: reservation.reservation_id)
     }
 }
