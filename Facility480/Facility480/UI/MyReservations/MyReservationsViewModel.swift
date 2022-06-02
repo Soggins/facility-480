@@ -8,12 +8,14 @@
 import Foundation
 
 class MyReservationsViewModel: ObservableObject {
-    @Published var repositories = DependencyInjector()
+    @Published var repositories: DependencyInjector.Repositories
     @Published var flowControl: HomeViewsEnum? = nil
     @Published var myReservationsFlowControl: MyReservationsViewsEnum? = nil
     
     @Published var currentReservations: [Reservation]
     @Published var pastReserations: [Reservation]
+    
+    let deleteReservationUseCase: DeleteReservationUseCase
     
     func handleOnReservationDelete(_ reserve: Reservation) {
         if let index = currentReservations.firstIndex(of: reserve) {
@@ -22,9 +24,11 @@ class MyReservationsViewModel: ObservableObject {
     }
     
     
-    init(currentReservations: [Reservation], pastReservations: [Reservation]) {
+    init(currentReservations: [Reservation], pastReservations: [Reservation], repositories: DependencyInjector.Repositories) {
+        self.repositories = repositories
         self.currentReservations = currentReservations
         self.pastReserations = pastReservations
+        self.deleteReservationUseCase = DeleteReservationUseCase(reservationRepository: repositories.reservationRepository)
     }
     
     func toDetails(){

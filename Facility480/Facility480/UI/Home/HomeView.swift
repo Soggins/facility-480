@@ -58,7 +58,7 @@ struct HomeView: View {
     private var navigationLinks: some View {
         NavigationLink(tag: HomeViewsEnum.myReservations, selection: activeLink(),
                destination: {
-            MyReservationsView(viewModel: MyReservationsViewModel(currentReservations: viewModel.currentReservations ?? emptyReservations, pastReservations: viewModel.pastReservations ?? emptyReservations))
+            MyReservationsView(viewModel: MyReservationsViewModel(currentReservations: viewModel.currentReservations ?? emptyReservations, pastReservations: viewModel.pastReservations ?? emptyReservations, repositories: viewModel.repositories))
 //                .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)
         },
@@ -67,7 +67,7 @@ struct HomeView: View {
         })
         NavigationLink(tag: HomeViewsEnum.reservationDetails, selection: activeLink(),
                destination: {
-            ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: viewModel.selectedReservation!, repositories: viewModel.repositories.repositories, onDismiss: {
+            ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: viewModel.selectedReservation!, repositories: viewModel.repositories, onDismiss: {
                 viewModel.flowControl = nil
                 viewModel.selectedReservation = nil
             }))

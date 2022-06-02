@@ -9,7 +9,7 @@ import Foundation
 
 class ReservationDetailsViewModel: ObservableObject {
     
-    @Published var repositories = DependencyInjector()
+    @Published var repositories: DependencyInjector.Repositories
     @Published var reservation: Reservation?
     
     let deleteReservationUseCase: DeleteReservationUseCase
@@ -21,6 +21,7 @@ class ReservationDetailsViewModel: ObservableObject {
     init(reservation: Reservation, repositories: DependencyInjector.Repositories, onDismiss: (() -> Void)?,
          onReservationDelete: ((Reservation) -> Void)? = nil
     ) {
+        self.repositories = repositories
         self.reservation = reservation
         self.deleteReservationUseCase = DeleteReservationUseCase(reservationRepository: repositories.reservationRepository)
         self.onDismiss = onDismiss

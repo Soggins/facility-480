@@ -9,7 +9,7 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     @Published var flowControl: HomeViewsEnum? = nil
-    @Published var repositories = DependencyInjector()
+    @Published var repositories: DependencyInjector.Repositories
     
     @Published var nextReservation: Reservation?
     @Published var currentReservations: [Reservation]?
@@ -26,6 +26,7 @@ class HomeViewModel: ObservableObject {
     
     
     init(repositories: DependencyInjector.Repositories) {
+        self.repositories = repositories
         self.nextReservationUseCase = GetNextReservationUseCase(reservationRepository: repositories.reservationRepository)
         self.currentReservationsUseCase = GetCurrentReservationsUseCase(reservationRepository: repositories.reservationRepository)
         self.pastReservationsUseCase = GetPastReservationUseCase(reservationRepository: repositories.reservationRepository)

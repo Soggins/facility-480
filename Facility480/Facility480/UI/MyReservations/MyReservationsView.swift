@@ -56,7 +56,7 @@ struct MyReservationsView: View {
     @ViewBuilder
     private var navigationLinks: some View {
         NavigationLink(tag: MyReservationsViewsEnum.reservationDetails, selection: activeLink(), destination: {
-                        ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: selectedReservation ?? Reservation(reservation_id: "error", date: "error", type: "error"), repositories: viewModel.repositories.repositories, onDismiss: {
+                        ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: selectedReservation ?? Reservation(reservation_id: "error", date: "error", type: "error"), repositories: viewModel.repositories, onDismiss: {
         selectedReservation = nil}, onReservationDelete: {
             viewModel.handleOnReservationDelete($0)
         }))

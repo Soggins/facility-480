@@ -64,9 +64,7 @@ class ReservationDataSource: ReservationRepository {
         var parameters = URLComponents(string: parent)
         let queryItem = URLQueryItem(name: "reservationid", value: id)
         parameters?.queryItems = [queryItem]
-        
-        print(parameters?.url)
-        
+                
         AF.request(parameters?.url ?? "", method: .delete, headers: header).validate(statusCode: 200...299).response { response in
             print("\(response.value as Any) delete response")
             print("DELETE URL: \(String(describing: response.debugDescription))")
