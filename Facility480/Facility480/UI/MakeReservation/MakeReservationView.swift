@@ -8,7 +8,44 @@
 import SwiftUI
 
 struct MakeReservationView: View {
+    @StateObject var viewModel: MakeReservationViewModel
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
+    @State private var selectedDate = Date()
+    @State private var reservationDates = [Date]()
+    @State private var showCalendarOverlay = false
+    
+//    var selectedDateAsString: String {
+//        let formatter = DateFormatter()
+//        formatter.dateStyle = .short
+//        return formatter.string(from: reservationDates)
+//    }
+    
+    @ViewBuilder
+    private var workstationView: some View {
+        Text("a")
+    }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            VStack {
+                  workstationView
+            }
+            .toolbar{
+                ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarLeading){
+                    Button(action: { self.mode.wrappedValue.dismiss() }) {
+                        HStack {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .frame(width: 10, height: 10)
+                                
+                            Text("Reserve stall")
+                                .padding(.leading, 10)
+                        }
+                        .foregroundColor(.black)
+                    }
+                }
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

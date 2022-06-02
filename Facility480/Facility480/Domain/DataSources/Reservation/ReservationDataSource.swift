@@ -59,8 +59,6 @@ class ReservationDataSource: ReservationRepository {
         
         let header = getHeader(token: getToken())
         
-//        let parameters: Parameters = ["reservationid": id]
-        
         var parameters = URLComponents(string: parent)
         let queryItem = URLQueryItem(name: "reservationid", value: id)
         parameters?.queryItems = [queryItem]

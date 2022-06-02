@@ -16,6 +16,7 @@ class HomeViewModel: ObservableObject {
     @Published var pastReservations: [Reservation]?
     
     @Published var selectedReservation: Reservation?
+    @Published var selectedType: ReservationType = .housing
     
     let nextReservationUseCase: GetNextReservationUseCase
     let currentReservationsUseCase: GetCurrentReservationsUseCase

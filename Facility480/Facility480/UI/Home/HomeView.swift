@@ -83,15 +83,14 @@ struct HomeView: View {
                     EmptyView()
         })
         NavigationLink(tag: HomeViewsEnum.makeReservation, selection: activeLink(), destination: {
-            MakeReservationView()
-                .navigationBarHidden(true)
+            MakeReservationView(viewModel: MakeReservationViewModel(selectedType: viewModel.selectedType))
+                .navigationBarBackButtonHidden(true)
         }, label: {
             EmptyView()   
         })
         NavigationLink(tag: HomeViewsEnum.settings, selection: activeLink(),
                destination: {
             SettingsView()
-                .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)
         },
                label: {
@@ -151,14 +150,21 @@ struct HomeView: View {
                                 HStack(spacing: 20) {
                                     Group {
                                         Button{
-                                            
+                                            viewModel.selectedType = .workstation
+                                            viewModel.handleOnMakeReservation()
                                         } label: {
                                             ReservationItemButton(facilityName: "workstation")
                                         }
-                                        Button{ } label: {
+                                        Button{
+                                            viewModel.selectedType = .housing
+                                            viewModel.handleOnMakeReservation()
+                                        } label: {
                                             ReservationItemButton(facilityName: "housing")
                                         }
-                                        Button{ } label: {
+                                        Button{
+                                            viewModel.selectedType = .vehicle
+                                            viewModel.handleOnMakeReservation()
+                                        } label: {
                                             ReservationItemButton(facilityName: "vehicle")
                                         }
                                             .padding(.trailing, 33)
@@ -205,7 +211,7 @@ struct HomeView: View {
                                 
                                 VStack{
                                     HStack {
-                                        VStack {
+                                        VStack(alignment: .leading) {
                                             Text("Próxima reserva en 0d 3h 29m")
                                                 .fontWeight(.bold)
                                             Text("\(viewModel.nextReservation?.date.replacingOccurrences(of: ".", with: "/") ?? "null") \(viewModel.nextReservation?.getName() ?? "error")")

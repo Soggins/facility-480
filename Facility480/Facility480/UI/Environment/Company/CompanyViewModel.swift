@@ -9,7 +9,7 @@ import Foundation
 
 class CompanyViewModel: ObservableObject {
     
-    @Published var companyCode: String = ""
+    @Published var companyCode: String = "480"
     @Published var invalidAttempts = 0
     
     let handleOnOkButtonPress: (() -> Void)?
