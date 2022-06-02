@@ -59,9 +59,17 @@ class ReservationDataSource: ReservationRepository {
         
         let header = getHeader(token: getToken())
         
-        AF.request(parent, method: .delete, parameters: id, headers: header).validate(statusCode: 200...299).response { response in
+//        let parameters: Parameters = ["reservationid": id]
+        
+        var parameters = URLComponents(string: parent)
+        let queryItem = URLQueryItem(name: "reservationid", value: id)
+        parameters?.queryItems = [queryItem]
+        
+        print(parameters?.url)
+        
+        AF.request(parameters?.url ?? "", method: .delete, headers: header).validate(statusCode: 200...299).response { response in
             print("\(response.value as Any) delete response")
-            print("DELETE URL: \(String(describing: response.request))")
+            print("DELETE URL: \(String(describing: response.debugDescription))")
             if let error = response.error {
                 print("\(error) DELETE ERROR")
                 success(false)
@@ -75,3 +83,4 @@ class ReservationDataSource: ReservationRepository {
     
     
 }
+

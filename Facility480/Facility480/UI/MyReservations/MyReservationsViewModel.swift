@@ -15,6 +15,12 @@ class MyReservationsViewModel: ObservableObject {
     @Published var currentReservations: [Reservation]
     @Published var pastReserations: [Reservation]
     
+    func handleOnReservationDelete(_ reserve: Reservation) {
+        if let index = currentReservations.firstIndex(of: reserve) {
+            currentReservations.remove(at: index)
+        }
+    }
+    
     
     init(currentReservations: [Reservation], pastReservations: [Reservation]) {
         self.currentReservations = currentReservations

@@ -76,10 +76,17 @@ struct HomeView: View {
                 .onDisappear{
                     viewModel.flowControl = nil
                     viewModel.selectedReservation = nil
+                    initializeView()
                 }
         },
                label: {
                     EmptyView()
+        })
+        NavigationLink(tag: HomeViewsEnum.makeReservation, selection: activeLink(), destination: {
+            MakeReservationView()
+                .navigationBarHidden(true)
+        }, label: {
+            EmptyView()   
         })
         NavigationLink(tag: HomeViewsEnum.settings, selection: activeLink(),
                destination: {
@@ -251,9 +258,7 @@ struct HomeView: View {
                     Spacer()
                 }
                 .onAppear(){
-                    viewModel.getNextReservation()
-                    viewModel.getCurrentReservations()
-                    viewModel.getPastReservations()
+                    initializeView()
                 }
                 .toolbar{
                     ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarLeading){
@@ -282,10 +287,16 @@ struct HomeView: View {
             }
             .ignoresSafeArea()
         }
-            
+        
             
         
     
+    }
+    
+    private func initializeView() {
+        viewModel.getNextReservation()
+        viewModel.getCurrentReservations()
+        viewModel.getPastReservations()
     }
 }
 //

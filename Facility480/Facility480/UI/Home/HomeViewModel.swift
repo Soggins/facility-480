@@ -42,6 +42,9 @@ class HomeViewModel: ObservableObject {
         flowControl = .settings
     }
     
+    func handleOnMakeReservation() {
+        flowControl = .makeReservation
+    }
     
     public func getNextReservation() {
         nextReservationUseCase.execute(completion: { result in
@@ -50,6 +53,7 @@ class HomeViewModel: ObservableObject {
 //                print(reservation)
                 self.nextReservation = reservation
             case .failure(let error):
+                self.nextReservation = nil
                 print(error)
             }
         })

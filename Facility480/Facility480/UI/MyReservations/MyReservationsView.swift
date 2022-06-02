@@ -57,7 +57,9 @@ struct MyReservationsView: View {
     private var navigationLinks: some View {
         NavigationLink(tag: MyReservationsViewsEnum.reservationDetails, selection: activeLink(), destination: {
                         ReservationDetailsView(viewModel: ReservationDetailsViewModel(reservation: selectedReservation ?? Reservation(reservation_id: "error", date: "error", type: "error"), repositories: viewModel.repositories.repositories, onDismiss: {
-        selectedReservation = nil}))
+        selectedReservation = nil}, onReservationDelete: {
+            viewModel.handleOnReservationDelete($0)
+        }))
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)
                 .onDisappear{
