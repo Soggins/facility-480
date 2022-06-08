@@ -9,11 +9,11 @@ import Foundation
 import Alamofire
 
 class WorkstationDataSource: WorkstationRepository {
-    func getWorkstations(parent: String, params: GetWorkstationUseCaseParams, completion: @escaping ((Result<[Workstation], DataSourceError>)) -> Void) {
+    func getWorkstations(parent: String, params: GetWorkstationsUseCaseParams, completion: @escaping ((Result<[Workstation], DataSourceError>)) -> Void) {
         let header = getHeader(token: getToken())
         
         var parameters = URLComponents(string: parent)
-        let queryItemDates = URLQueryItem(name: "dates", value: params.date)
+        let queryItemDates = URLQueryItem(name: "dates", value: params.dates)
         let queryItemZoneid = URLQueryItem(name: "zoneid", value: params.zoneid)
         parameters?.queryItems = [queryItemDates, queryItemZoneid]
         

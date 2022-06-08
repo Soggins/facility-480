@@ -28,29 +28,14 @@ public enum ReservationType : Codable, CaseIterable {
 }
 
 public enum ReservationTypeWithData: Codable, Hashable {
-    case workStation(WorkStationData)
-    case housing(HousingData)
-    case vehicle(VehicleData)
+    case workStation(Workstation)
+    case housing(Housing)
+    case vehicle(Vehicle)
 }
 
-public struct WorkStationData: ReservationTypeCommonData{
-    var workstation_id: String
+struct ReservationCommonItem: ReservationTypeCommonData {
+    var id: String
     var name: String
-    var available: Bool
-}
-
-public struct HousingData : ReservationTypeCommonData {
-    var housing_id: String
-    var name: String
-    var available: Bool
-    var latitude: String
-    var longitude: String
-}
-
-public struct VehicleData: ReservationTypeCommonData {
-    var licensePlate: String
-    var name: String
-    var parked_on: String
     var available: Bool
 }
 
@@ -59,9 +44,9 @@ struct Reservation: ReservationProtocol {
     var date: String
     var type: String
     
-    var workStation: WorkStationData?
-    var housing: HousingData?
-    var vehicle: VehicleData?
+    var workStation: Workstation?
+    var housing: Housing?
+    var vehicle: Vehicle?
     
     func getType() -> ReservationType?{
         switch type {
@@ -79,11 +64,11 @@ struct Reservation: ReservationProtocol {
     func getData() -> ReservationTypeWithData?{
         switch getType() {
         case .housing:
-            return .housing(housing ?? HousingData(housing_id: "not found", name: "error", available: false, latitude: "", longitude: ""))
+            return .housing(housing ?? Housing(housing_id: "not found", name: "error", available: false, latitude: "", longitude: ""))
         case .workstation:
-            return .workStation(workStation ?? WorkStationData(workstation_id: "not found", name: "error", available: false))
+            return .workStation(workStation ?? Workstation(workstation_id: "not found", name: "error", available: false))
         case .vehicle:
-            return .vehicle(vehicle ?? VehicleData(licensePlate: "not found", name: "error", parked_on: "error", available: false))
+            return .vehicle(vehicle ?? Vehicle(licensePlate: "not found", name: "error", parked_on: "error", available: false))
         default:
             return nil
         }

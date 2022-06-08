@@ -34,17 +34,32 @@ struct HomeView: View {
     //when optional currentReservations = nil
     let emptyReservations: [Reservation] = []
     
-//    var timeUntilNextReservation: String {
-//        let todayDate = Date.now
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "mm.dd.yy"
-//        let nextReservationDate = dateFormatter.date(from: viewModel.nextReservation!.date)
-//
-//        
-//        return ""
-//    }
+    @State var nowDate: Date = Date()
+    var referenceDate: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy"
+        
+        let stringDate = viewModel.nextReservation?.date.replacingOccurrences(of: ".", with: "/") ?? "01/01/2024"
+        return dateFormatter.date(from: stringDate)!
+    }
+    var timer: Timer {
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
+            self.nowDate = Date()
+        }
+    }
     
-    
+    func countDownString(from nowDate: Date) -> String {
+            let calendar = Calendar(identifier: .gregorian)
+            let components = calendar
+                .dateComponents([.day, .hour, .minute, .second]
+                    ,from: nowDate,
+                     to: referenceDate)
+            return String(format: "%2dd,%2dh,%2dm",
+                          components.day ?? 00,
+                          components.hour ?? 00,
+                          components.minute ?? 00,
+                          components.second ?? 00)
+    }
     
     private func activeLink() -> Binding<HomeViewsEnum?> {
         return Binding(get: {
@@ -212,7 +227,7 @@ struct HomeView: View {
                                 VStack{
                                     HStack {
                                         VStack(alignment: .leading) {
-                                            Text("Próxima reserva en 0d 3h 29m")
+                                            Text("Próxima reserva en \(countDownString(from:Date()))")
                                                 .fontWeight(.bold)
                                             Text("\(viewModel.nextReservation?.date.replacingOccurrences(of: ".", with: "/") ?? "null") \(viewModel.nextReservation?.getName() ?? "error")")
                                         }

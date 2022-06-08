@@ -22,8 +22,7 @@
 		12A0D131284F5A3100A66B48 /* ZoneDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D130284F5A3100A66B48 /* ZoneDataSource.swift */; };
 		12A0D134284F5B1700A66B48 /* GetZonesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D133284F5B1700A66B48 /* GetZonesUseCase.swift */; };
 		12A0D137284F62C700A66B48 /* WorkstationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D136284F62C700A66B48 /* WorkstationRepository.swift */; };
-		12A0D139284F727700A66B48 /* Workstation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D138284F727700A66B48 /* Workstation.swift */; };
-		12A0D13C284F72D700A66B48 /* WorkstationDateSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D13B284F72D700A66B48 /* WorkstationDateSource.swift */; };
+		12A0D13C284F72D700A66B48 /* WorkstationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D13B284F72D700A66B48 /* WorkstationDataSource.swift */; };
 		12A0D13F284F734D00A66B48 /* GetWorkstationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D13E284F734D00A66B48 /* GetWorkstationUseCase.swift */; };
 		12A0D1412850130A00A66B48 /* MakeWorkstationReservationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D1402850130A00A66B48 /* MakeWorkstationReservationUseCase.swift */; };
 		12A1502328252D2A008B453E /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A1502228252D2A008B453E /* Reservation.swift */; };
@@ -55,6 +54,17 @@
 		12BA6B4728195E5200D44482 /* ReservationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA6B4628195E5200D44482 /* ReservationItem.swift */; };
 		12C3A5B1280439F1002EBEF3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C3A5B0280439F1002EBEF3 /* LoginView.swift */; };
 		12C44C9F2848C64600870F0D /* MakeReservationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C44C9E2848C64600870F0D /* MakeReservationViewModel.swift */; };
+		12E75E2D2850983A00604700 /* VehicleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E75E2C2850983A00604700 /* VehicleRepository.swift */; };
+		12E75E2F285098DB00604700 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E75E2E285098DB00604700 /* Vehicle.swift */; };
+		12E75E3128509CAC00604700 /* Workstation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E75E3028509CAC00604700 /* Workstation.swift */; };
+		12E75E3328509CC400604700 /* Housing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E75E3228509CC400604700 /* Housing.swift */; };
+		12E75E3628509F4700604700 /* VehicleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E75E3528509F4700604700 /* VehicleDataSource.swift */; };
+		12E75E392850A00300604700 /* GetVehiclesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E75E382850A00300604700 /* GetVehiclesUseCase.swift */; };
+		12E75E3B2850A11E00604700 /* MakeVehicleReservationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E75E3A2850A11E00604700 /* MakeVehicleReservationUseCase.swift */; };
+		12E75E3E2850B2E500604700 /* HousingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E75E3D2850B2E500604700 /* HousingRepository.swift */; };
+		12E75E412850B32100604700 /* HousingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E75E402850B32100604700 /* HousingDataSource.swift */; };
+		12E75E442850B35D00604700 /* GetHousingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E75E432850B35D00604700 /* GetHousingsUseCase.swift */; };
+		12E75E462850B36E00604700 /* MakeHousingReservationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E75E452850B36E00604700 /* MakeHousingReservationUseCase.swift */; };
 		F605EA986C76F1C7E3EC4360 /* Pods_Facility480.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF7370D7084BA0F969C75CE /* Pods_Facility480.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,8 +85,7 @@
 		12A0D130284F5A3100A66B48 /* ZoneDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneDataSource.swift; sourceTree = "<group>"; };
 		12A0D133284F5B1700A66B48 /* GetZonesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetZonesUseCase.swift; sourceTree = "<group>"; };
 		12A0D136284F62C700A66B48 /* WorkstationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkstationRepository.swift; sourceTree = "<group>"; };
-		12A0D138284F727700A66B48 /* Workstation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workstation.swift; sourceTree = "<group>"; };
-		12A0D13B284F72D700A66B48 /* WorkstationDateSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkstationDateSource.swift; sourceTree = "<group>"; };
+		12A0D13B284F72D700A66B48 /* WorkstationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkstationDataSource.swift; sourceTree = "<group>"; };
 		12A0D13E284F734D00A66B48 /* GetWorkstationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWorkstationUseCase.swift; sourceTree = "<group>"; };
 		12A0D1402850130A00A66B48 /* MakeWorkstationReservationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWorkstationReservationUseCase.swift; sourceTree = "<group>"; };
 		12A1502228252D2A008B453E /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
@@ -108,6 +117,17 @@
 		12BA6B4628195E5200D44482 /* ReservationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationItem.swift; sourceTree = "<group>"; };
 		12C3A5B0280439F1002EBEF3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		12C44C9E2848C64600870F0D /* MakeReservationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeReservationViewModel.swift; sourceTree = "<group>"; };
+		12E75E2C2850983A00604700 /* VehicleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleRepository.swift; sourceTree = "<group>"; };
+		12E75E2E285098DB00604700 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		12E75E3028509CAC00604700 /* Workstation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workstation.swift; sourceTree = "<group>"; };
+		12E75E3228509CC400604700 /* Housing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Housing.swift; sourceTree = "<group>"; };
+		12E75E3528509F4700604700 /* VehicleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataSource.swift; sourceTree = "<group>"; };
+		12E75E382850A00300604700 /* GetVehiclesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVehiclesUseCase.swift; sourceTree = "<group>"; };
+		12E75E3A2850A11E00604700 /* MakeVehicleReservationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeVehicleReservationUseCase.swift; sourceTree = "<group>"; };
+		12E75E3D2850B2E500604700 /* HousingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousingRepository.swift; sourceTree = "<group>"; };
+		12E75E402850B32100604700 /* HousingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousingDataSource.swift; sourceTree = "<group>"; };
+		12E75E432850B35D00604700 /* GetHousingsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHousingsUseCase.swift; sourceTree = "<group>"; };
+		12E75E452850B36E00604700 /* MakeHousingReservationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeHousingReservationUseCase.swift; sourceTree = "<group>"; };
 		29237BDEE09DFCCDD85AFE52 /* Pods-Facility480.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facility480.release.xcconfig"; path = "Target Support Files/Pods-Facility480/Pods-Facility480.release.xcconfig"; sourceTree = "<group>"; };
 		3C1456A69F429263F8C617AE /* Pods-Facility480.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facility480.debug.xcconfig"; path = "Target Support Files/Pods-Facility480/Pods-Facility480.debug.xcconfig"; sourceTree = "<group>"; };
 		5CF7370D7084BA0F969C75CE /* Pods_Facility480.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Facility480.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,7 +257,7 @@
 		12A0D13A284F72CA00A66B48 /* Workstation */ = {
 			isa = PBXGroup;
 			children = (
-				12A0D13B284F72D700A66B48 /* WorkstationDateSource.swift */,
+				12A0D13B284F72D700A66B48 /* WorkstationDataSource.swift */,
 			);
 			path = Workstation;
 			sourceTree = "<group>";
@@ -257,7 +277,9 @@
 				12A1502228252D2A008B453E /* Reservation.swift */,
 				12A487FF28364101007FE218 /* User.swift */,
 				12A0D12D284F59AE00A66B48 /* Zone.swift */,
-				12A0D138284F727700A66B48 /* Workstation.swift */,
+				12E75E2E285098DB00604700 /* Vehicle.swift */,
+				12E75E3028509CAC00604700 /* Workstation.swift */,
+				12E75E3228509CC400604700 /* Housing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -378,6 +400,8 @@
 		12B442E6282A701900AB5BF6 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				12E75E3C2850B2D900604700 /* Housing */,
+				12E75E2B2850974C00604700 /* Vehicle */,
 				12A0D135284F62B500A66B48 /* Workstation */,
 				12A0D12A284F597000A66B48 /* Zone */,
 				12AB1651283FD195003380FD /* Reservation */,
@@ -390,6 +414,8 @@
 		12B442E7282A702200AB5BF6 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				12E75E422850B35100604700 /* Housing */,
+				12E75E3728509FF300604700 /* Vehicle */,
 				12A0D13D284F734100A66B48 /* Workstation */,
 				12A0D132284F5B0700A66B48 /* Zone */,
 				12AB1654283FD9A4003380FD /* Reservation */,
@@ -401,6 +427,8 @@
 		12B442E8282A703D00AB5BF6 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				12E75E3F2850B31500604700 /* Housing */,
+				12E75E3428509F2C00604700 /* Vehicle */,
 				12A0D13A284F72CA00A66B48 /* Workstation */,
 				12A0D12F284F5A1300A66B48 /* Zone */,
 				12AB164E283FD13C003380FD /* Reservation */,
@@ -452,6 +480,56 @@
 				12AB164C283C3024003380FD /* UIEffects.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		12E75E2B2850974C00604700 /* Vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				12E75E2C2850983A00604700 /* VehicleRepository.swift */,
+			);
+			path = Vehicle;
+			sourceTree = "<group>";
+		};
+		12E75E3428509F2C00604700 /* Vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				12E75E3528509F4700604700 /* VehicleDataSource.swift */,
+			);
+			path = Vehicle;
+			sourceTree = "<group>";
+		};
+		12E75E3728509FF300604700 /* Vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				12E75E382850A00300604700 /* GetVehiclesUseCase.swift */,
+				12E75E3A2850A11E00604700 /* MakeVehicleReservationUseCase.swift */,
+			);
+			path = Vehicle;
+			sourceTree = "<group>";
+		};
+		12E75E3C2850B2D900604700 /* Housing */ = {
+			isa = PBXGroup;
+			children = (
+				12E75E3D2850B2E500604700 /* HousingRepository.swift */,
+			);
+			path = Housing;
+			sourceTree = "<group>";
+		};
+		12E75E3F2850B31500604700 /* Housing */ = {
+			isa = PBXGroup;
+			children = (
+				12E75E402850B32100604700 /* HousingDataSource.swift */,
+			);
+			path = Housing;
+			sourceTree = "<group>";
+		};
+		12E75E422850B35100604700 /* Housing */ = {
+			isa = PBXGroup;
+			children = (
+				12E75E432850B35D00604700 /* GetHousingsUseCase.swift */,
+				12E75E452850B36E00604700 /* MakeHousingReservationUseCase.swift */,
+			);
+			path = Housing;
 			sourceTree = "<group>";
 		};
 		2CAEBC09C10499C2098895E3 /* Frameworks */ = {
@@ -589,16 +667,20 @@
 				12A0D12C284F598000A66B48 /* ZoneRepository.swift in Sources */,
 				12A6D67A2823D4FC0029E0B4 /* ReservationItemButton.swift in Sources */,
 				12BA6B4728195E5200D44482 /* ReservationItem.swift in Sources */,
+				12E75E462850B36E00604700 /* MakeHousingReservationUseCase.swift in Sources */,
 				12AB16612843CE36003380FD /* MakeReservationView.swift in Sources */,
 				12AB1643283BACD8003380FD /* UserRepository.swift in Sources */,
 				12A0D131284F5A3100A66B48 /* ZoneDataSource.swift in Sources */,
+				12E75E3328509CC400604700 /* Housing.swift in Sources */,
 				1295F6202810050900B37F0D /* LoginViewModel.swift in Sources */,
 				12B442EB282A723C00AB5BF6 /* EnvironmentView.swift in Sources */,
+				12E75E392850A00300604700 /* GetVehiclesUseCase.swift in Sources */,
 				129FB043281697A900CAF6DB /* HomeViewModel.swift in Sources */,
 				12AB164D283C3024003380FD /* UIEffects.swift in Sources */,
 				12A0D134284F5B1700A66B48 /* GetZonesUseCase.swift in Sources */,
 				12C44C9F2848C64600870F0D /* MakeReservationViewModel.swift in Sources */,
 				12AB1646283BAD8B003380FD /* UserRemoteDataSource.swift in Sources */,
+				12E75E442850B35D00604700 /* GetHousingsUseCase.swift in Sources */,
 				12A0D13F284F734D00A66B48 /* GetWorkstationUseCase.swift in Sources */,
 				12AB1650283FD14C003380FD /* ReservationDataSource.swift in Sources */,
 				12AB1658283FDFE6003380FD /* ReservationDetailsViewModel.swift in Sources */,
@@ -606,28 +688,34 @@
 				12A0D137284F62C700A66B48 /* WorkstationRepository.swift in Sources */,
 				12B442F0282A7E1000AB5BF6 /* CompanyView.swift in Sources */,
 				129804D028204D8E0073C7F5 /* MyReservationsViewModel.swift in Sources */,
+				12E75E3B2850A11E00604700 /* MakeVehicleReservationUseCase.swift in Sources */,
 				12A368F8282BCD3D00F74281 /* CompanyViewModel.swift in Sources */,
+				12E75E3E2850B2E500604700 /* HousingRepository.swift in Sources */,
 				1206E9A928042A1C0096C29C /* ContentView.swift in Sources */,
 				1295F62328100C6200B37F0D /* HomeView.swift in Sources */,
+				12E75E2F285098DB00604700 /* Vehicle.swift in Sources */,
 				12AB1649283BAE78003380FD /* UserLoginUseCase.swift in Sources */,
 				129804CE28204D750073C7F5 /* MyReservationsView.swift in Sources */,
 				12A6D6752823D0E30029E0B4 /* MyReservationsTab.swift in Sources */,
 				12992BA92821341100F796D5 /* MyReservationsTopBarView.swift in Sources */,
 				12AB1656283FDAA5003380FD /* GetNextReservationUseCase.swift in Sources */,
 				12A178982833ADEE0033622A /* MainViewModel.swift in Sources */,
+				12E75E2D2850983A00604700 /* VehicleRepository.swift in Sources */,
 				12A0D1412850130A00A66B48 /* MakeWorkstationReservationUseCase.swift in Sources */,
+				12E75E3128509CAC00604700 /* Workstation.swift in Sources */,
 				12A6D67E2823E0670029E0B4 /* ReservationDetailsView.swift in Sources */,
 				12BA6B45281958CF00D44482 /* ReservationItemIcon.swift in Sources */,
+				12E75E3628509F4700604700 /* VehicleDataSource.swift in Sources */,
 				12AB16632845145C003380FD /* GetPastReservationsUseCase.swift in Sources */,
 				12A1502328252D2A008B453E /* Reservation.swift in Sources */,
 				1206E9A728042A1C0096C29C /* Facility480App.swift in Sources */,
 				12AB1653283FD1B6003380FD /* ReservationRepository.swift in Sources */,
 				12AB165A2840ED01003380FD /* DeleteReservationUseCase.swift in Sources */,
 				12AB165C2842EB8C003380FD /* GetCurrentReservationsUseCase.swift in Sources */,
-				12A0D139284F727700A66B48 /* Workstation.swift in Sources */,
-				12A0D13C284F72D700A66B48 /* WorkstationDateSource.swift in Sources */,
+				12A0D13C284F72D700A66B48 /* WorkstationDataSource.swift in Sources */,
 				12A368F6282BA59100F74281 /* EnvironmentViewModel.swift in Sources */,
 				12A2EB7F28350B6B00E5C2F0 /* SettingsView.swift in Sources */,
+				12E75E412850B32100604700 /* HousingDataSource.swift in Sources */,
 				12A4880028364101007FE218 /* User.swift in Sources */,
 				12AB1640283BA9D8003380FD /* Authentication.swift in Sources */,
 				12A0D12E284F59AE00A66B48 /* Zone.swift in Sources */,

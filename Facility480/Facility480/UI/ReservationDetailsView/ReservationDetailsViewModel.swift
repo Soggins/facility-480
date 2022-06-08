@@ -39,10 +39,10 @@ class ReservationDetailsViewModel: ObservableObject {
     public func deleteReservation() {
         
         deleteReservationUseCase.execute(success: { state in
-            print("DELETE: \(state)")
+            //print("DELETE: \(state)")
             
             if state {
-                print("WAS DELETED: \(self.reservation?.reservation_id ?? "null")")
+                //print("WAS DELETED: \(self.reservation?.reservation_id ?? "null")")
                 if let onReservationDelete = self.onReservationDelete {
                     onReservationDelete(self.reservation!)
                 }

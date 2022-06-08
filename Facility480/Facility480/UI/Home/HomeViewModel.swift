@@ -88,10 +88,10 @@ class HomeViewModel: ObservableObject {
     public func deleteReservation(_ reservation: Reservation) {
         
         deleteReservationUseCase.execute(success: { [self] state in
-            print("DELETE: \(state)")
+            //print("DELETE: \(state)")
             
             if state {
-                print("WAS DELETED: \(reservation)")
+                //print("WAS DELETED: \(reservation)")
                 
                 if currentReservations != nil {
                     if let index = currentReservations!.firstIndex(of: reservation) {

@@ -16,7 +16,7 @@ class GetWorkstationsUseCase {
         self.repository = workstationRepository
     }
     
-    public func execute(params: GetWorkstationUseCaseParams,completion: @escaping((Result<[Workstation], DataSourceError>)) -> Void){
+    public func execute(params: GetWorkstationsUseCaseParams,completion: @escaping((Result<[Workstation], DataSourceError>)) -> Void){
         
         repository.getWorkstations(parent: url, params: params, completion: { result in
             
@@ -31,7 +31,7 @@ class GetWorkstationsUseCase {
     }
 }
 
-public struct GetWorkstationUseCaseParams: Codable {
-    var date: String
+public struct GetWorkstationsUseCaseParams: Codable {
+    var dates: String
     var zoneid: String
 }
