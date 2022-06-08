@@ -17,6 +17,15 @@
 		129804D028204D8E0073C7F5 /* MyReservationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129804CF28204D8E0073C7F5 /* MyReservationsViewModel.swift */; };
 		12992BA92821341100F796D5 /* MyReservationsTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12992BA82821341100F796D5 /* MyReservationsTopBarView.swift */; };
 		129FB043281697A900CAF6DB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FB042281697A900CAF6DB /* HomeViewModel.swift */; };
+		12A0D12C284F598000A66B48 /* ZoneRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D12B284F598000A66B48 /* ZoneRepository.swift */; };
+		12A0D12E284F59AE00A66B48 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D12D284F59AE00A66B48 /* Zone.swift */; };
+		12A0D131284F5A3100A66B48 /* ZoneDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D130284F5A3100A66B48 /* ZoneDataSource.swift */; };
+		12A0D134284F5B1700A66B48 /* GetZonesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D133284F5B1700A66B48 /* GetZonesUseCase.swift */; };
+		12A0D137284F62C700A66B48 /* WorkstationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D136284F62C700A66B48 /* WorkstationRepository.swift */; };
+		12A0D139284F727700A66B48 /* Workstation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D138284F727700A66B48 /* Workstation.swift */; };
+		12A0D13C284F72D700A66B48 /* WorkstationDateSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D13B284F72D700A66B48 /* WorkstationDateSource.swift */; };
+		12A0D13F284F734D00A66B48 /* GetWorkstationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D13E284F734D00A66B48 /* GetWorkstationUseCase.swift */; };
+		12A0D1412850130A00A66B48 /* MakeWorkstationReservationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0D1402850130A00A66B48 /* MakeWorkstationReservationUseCase.swift */; };
 		12A1502328252D2A008B453E /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A1502228252D2A008B453E /* Reservation.swift */; };
 		12A178982833ADEE0033622A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A178972833ADEE0033622A /* MainViewModel.swift */; };
 		12A2EB7F28350B6B00E5C2F0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A2EB7E28350B6B00E5C2F0 /* SettingsView.swift */; };
@@ -61,6 +70,15 @@
 		129804CF28204D8E0073C7F5 /* MyReservationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReservationsViewModel.swift; sourceTree = "<group>"; };
 		12992BA82821341100F796D5 /* MyReservationsTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReservationsTopBarView.swift; sourceTree = "<group>"; };
 		129FB042281697A900CAF6DB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		12A0D12B284F598000A66B48 /* ZoneRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneRepository.swift; sourceTree = "<group>"; };
+		12A0D12D284F59AE00A66B48 /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		12A0D130284F5A3100A66B48 /* ZoneDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneDataSource.swift; sourceTree = "<group>"; };
+		12A0D133284F5B1700A66B48 /* GetZonesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetZonesUseCase.swift; sourceTree = "<group>"; };
+		12A0D136284F62C700A66B48 /* WorkstationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkstationRepository.swift; sourceTree = "<group>"; };
+		12A0D138284F727700A66B48 /* Workstation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workstation.swift; sourceTree = "<group>"; };
+		12A0D13B284F72D700A66B48 /* WorkstationDateSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkstationDateSource.swift; sourceTree = "<group>"; };
+		12A0D13E284F734D00A66B48 /* GetWorkstationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWorkstationUseCase.swift; sourceTree = "<group>"; };
+		12A0D1402850130A00A66B48 /* MakeWorkstationReservationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeWorkstationReservationUseCase.swift; sourceTree = "<group>"; };
 		12A1502228252D2A008B453E /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
 		12A178972833ADEE0033622A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		12A2EB7E28350B6B00E5C2F0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -184,11 +202,62 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		12A0D12A284F597000A66B48 /* Zone */ = {
+			isa = PBXGroup;
+			children = (
+				12A0D12B284F598000A66B48 /* ZoneRepository.swift */,
+			);
+			path = Zone;
+			sourceTree = "<group>";
+		};
+		12A0D12F284F5A1300A66B48 /* Zone */ = {
+			isa = PBXGroup;
+			children = (
+				12A0D130284F5A3100A66B48 /* ZoneDataSource.swift */,
+			);
+			path = Zone;
+			sourceTree = "<group>";
+		};
+		12A0D132284F5B0700A66B48 /* Zone */ = {
+			isa = PBXGroup;
+			children = (
+				12A0D133284F5B1700A66B48 /* GetZonesUseCase.swift */,
+			);
+			path = Zone;
+			sourceTree = "<group>";
+		};
+		12A0D135284F62B500A66B48 /* Workstation */ = {
+			isa = PBXGroup;
+			children = (
+				12A0D136284F62C700A66B48 /* WorkstationRepository.swift */,
+			);
+			path = Workstation;
+			sourceTree = "<group>";
+		};
+		12A0D13A284F72CA00A66B48 /* Workstation */ = {
+			isa = PBXGroup;
+			children = (
+				12A0D13B284F72D700A66B48 /* WorkstationDateSource.swift */,
+			);
+			path = Workstation;
+			sourceTree = "<group>";
+		};
+		12A0D13D284F734100A66B48 /* Workstation */ = {
+			isa = PBXGroup;
+			children = (
+				12A0D13E284F734D00A66B48 /* GetWorkstationUseCase.swift */,
+				12A0D1402850130A00A66B48 /* MakeWorkstationReservationUseCase.swift */,
+			);
+			path = Workstation;
+			sourceTree = "<group>";
+		};
 		12A1502128252D18008B453E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				12A1502228252D2A008B453E /* Reservation.swift */,
 				12A487FF28364101007FE218 /* User.swift */,
+				12A0D12D284F59AE00A66B48 /* Zone.swift */,
+				12A0D138284F727700A66B48 /* Workstation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,6 +378,8 @@
 		12B442E6282A701900AB5BF6 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				12A0D135284F62B500A66B48 /* Workstation */,
+				12A0D12A284F597000A66B48 /* Zone */,
 				12AB1651283FD195003380FD /* Reservation */,
 				12AB1641283BACC6003380FD /* User */,
 				12AB164A283BB3B7003380FD /* DependencyInjector.swift */,
@@ -319,6 +390,8 @@
 		12B442E7282A702200AB5BF6 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				12A0D13D284F734100A66B48 /* Workstation */,
+				12A0D132284F5B0700A66B48 /* Zone */,
 				12AB1654283FD9A4003380FD /* Reservation */,
 				12AB1647283BAE69003380FD /* User */,
 			);
@@ -328,6 +401,8 @@
 		12B442E8282A703D00AB5BF6 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				12A0D13A284F72CA00A66B48 /* Workstation */,
+				12A0D12F284F5A1300A66B48 /* Zone */,
 				12AB164E283FD13C003380FD /* Reservation */,
 				12AB1644283BAD7B003380FD /* User */,
 			);
@@ -511,19 +586,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				12C3A5B1280439F1002EBEF3 /* LoginView.swift in Sources */,
+				12A0D12C284F598000A66B48 /* ZoneRepository.swift in Sources */,
 				12A6D67A2823D4FC0029E0B4 /* ReservationItemButton.swift in Sources */,
 				12BA6B4728195E5200D44482 /* ReservationItem.swift in Sources */,
 				12AB16612843CE36003380FD /* MakeReservationView.swift in Sources */,
 				12AB1643283BACD8003380FD /* UserRepository.swift in Sources */,
+				12A0D131284F5A3100A66B48 /* ZoneDataSource.swift in Sources */,
 				1295F6202810050900B37F0D /* LoginViewModel.swift in Sources */,
 				12B442EB282A723C00AB5BF6 /* EnvironmentView.swift in Sources */,
 				129FB043281697A900CAF6DB /* HomeViewModel.swift in Sources */,
 				12AB164D283C3024003380FD /* UIEffects.swift in Sources */,
+				12A0D134284F5B1700A66B48 /* GetZonesUseCase.swift in Sources */,
 				12C44C9F2848C64600870F0D /* MakeReservationViewModel.swift in Sources */,
 				12AB1646283BAD8B003380FD /* UserRemoteDataSource.swift in Sources */,
+				12A0D13F284F734D00A66B48 /* GetWorkstationUseCase.swift in Sources */,
 				12AB1650283FD14C003380FD /* ReservationDataSource.swift in Sources */,
 				12AB1658283FDFE6003380FD /* ReservationDetailsViewModel.swift in Sources */,
 				12AB164B283BB3B7003380FD /* DependencyInjector.swift in Sources */,
+				12A0D137284F62C700A66B48 /* WorkstationRepository.swift in Sources */,
 				12B442F0282A7E1000AB5BF6 /* CompanyView.swift in Sources */,
 				129804D028204D8E0073C7F5 /* MyReservationsViewModel.swift in Sources */,
 				12A368F8282BCD3D00F74281 /* CompanyViewModel.swift in Sources */,
@@ -535,6 +615,7 @@
 				12992BA92821341100F796D5 /* MyReservationsTopBarView.swift in Sources */,
 				12AB1656283FDAA5003380FD /* GetNextReservationUseCase.swift in Sources */,
 				12A178982833ADEE0033622A /* MainViewModel.swift in Sources */,
+				12A0D1412850130A00A66B48 /* MakeWorkstationReservationUseCase.swift in Sources */,
 				12A6D67E2823E0670029E0B4 /* ReservationDetailsView.swift in Sources */,
 				12BA6B45281958CF00D44482 /* ReservationItemIcon.swift in Sources */,
 				12AB16632845145C003380FD /* GetPastReservationsUseCase.swift in Sources */,
@@ -543,10 +624,13 @@
 				12AB1653283FD1B6003380FD /* ReservationRepository.swift in Sources */,
 				12AB165A2840ED01003380FD /* DeleteReservationUseCase.swift in Sources */,
 				12AB165C2842EB8C003380FD /* GetCurrentReservationsUseCase.swift in Sources */,
+				12A0D139284F727700A66B48 /* Workstation.swift in Sources */,
+				12A0D13C284F72D700A66B48 /* WorkstationDateSource.swift in Sources */,
 				12A368F6282BA59100F74281 /* EnvironmentViewModel.swift in Sources */,
 				12A2EB7F28350B6B00E5C2F0 /* SettingsView.swift in Sources */,
 				12A4880028364101007FE218 /* User.swift in Sources */,
 				12AB1640283BA9D8003380FD /* Authentication.swift in Sources */,
+				12A0D12E284F59AE00A66B48 /* Zone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -83,7 +83,7 @@ struct HomeView: View {
                     EmptyView()
         })
         NavigationLink(tag: HomeViewsEnum.makeReservation, selection: activeLink(), destination: {
-            MakeReservationView(viewModel: MakeReservationViewModel(selectedType: viewModel.selectedType))
+            MakeReservationView(viewModel: MakeReservationViewModel(selectedType: viewModel.selectedType, repositories: viewModel.repositories))
                 .navigationBarBackButtonHidden(true)
         }, label: {
             EmptyView()   
