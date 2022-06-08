@@ -9,7 +9,6 @@ import Foundation
 
 class MyReservationsViewModel: ObservableObject {
     @Published var repositories: DependencyInjector.Repositories
-    @Published var flowControl: HomeViewsEnum? = nil
     @Published var myReservationsFlowControl: MyReservationsViewsEnum? = nil
     
     @Published var currentReservations: [Reservation]

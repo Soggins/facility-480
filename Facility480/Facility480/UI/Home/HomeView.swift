@@ -56,12 +56,6 @@ struct HomeView: View {
                           components.second ?? 00)
     }
     
-    var progress: Int {
-        
-        
-        return 0
-    }
-    
     private func activeLink() -> Binding<HomeViewsEnum?> {
         return Binding(get: {
             return viewModel.flowControl
@@ -231,7 +225,7 @@ struct HomeView: View {
                                             Text("Próxima reserva en \(countDownString(from:nowDate))")
                                                 .fontWeight(.bold)
                                                 .onReceive(timer) { _ in
-                                                    print(Date())
+//                                                    print(Date())
                                                     nowDate = Date()
                                                 }
                                             Text("\(viewModel.nextReservation?.date.replacingOccurrences(of: ".", with: "/") ?? "null") \(viewModel.nextReservation?.getName() ?? "error")")

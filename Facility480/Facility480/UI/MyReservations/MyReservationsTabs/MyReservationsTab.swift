@@ -12,27 +12,23 @@ struct MyReservationsTab: View {
     
     @Binding var selectedReservation: Reservation?
     
-    let reservations : [Reservation]
+    let reservations: [Reservation]
 
     
     var body: some View {
         List {
             ForEach(reservations, id: \.self) { reservation in
-                Button {
-                    
-                } label: {
-                    ReservationItem(reservation: reservation, selectedReservation: $selectedReservation, action: {
-                        viewModel.deleteReservation(reservation)
-                    })
-                    
-                }
+                ReservationItem(reservation: reservation, selectedReservation: $selectedReservation, action: {
+                    viewModel.deleteReservation(reservation)
+                })
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)
             }
         }
         .onChange(of: selectedReservation, perform: { reservation in
-            if let _ = reservation {
+            if reservation != nil {
                 viewModel.toDetails()
+                viewModel.myReservationsFlowControl = .reservationDetails
             }
         })
         .listStyle(PlainListStyle())

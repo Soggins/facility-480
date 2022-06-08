@@ -8,7 +8,6 @@
 import Foundation
 
 class ReservationDetailsViewModel: ObservableObject {
-    
     @Published var repositories: DependencyInjector.Repositories
     @Published var reservation: Reservation?
     

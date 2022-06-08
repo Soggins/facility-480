@@ -52,6 +52,7 @@ struct MyReservationsView: View {
             viewModel.myReservationsFlowControl = $0
         })
     }
+
     
     @ViewBuilder
     private var navigationLinks: some View {
@@ -62,9 +63,9 @@ struct MyReservationsView: View {
         }))
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)
-                .onDisappear{
-                    selectedReservation = nil
-                }
+//                .onDisappear{
+//                    selectedReservation = nil
+//                }
         }, label: {
         EmptyView()
         })
