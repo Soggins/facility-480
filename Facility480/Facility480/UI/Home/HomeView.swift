@@ -27,7 +27,6 @@ enum HomeViewsEnum: Hashable, Identifiable {
 }
 
 struct HomeView: View {
-    
     @StateObject var viewModel: HomeViewModel
     @State var searchbar = ""
     
@@ -42,11 +41,7 @@ struct HomeView: View {
         let stringDate = viewModel.nextReservation?.date.replacingOccurrences(of: ".", with: "/") ?? "01/01/2024"
         return dateFormatter.date(from: stringDate)!
     }
-    var timer: Timer {
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
-            self.nowDate = Date()
-        }
-    }
+    var timer =  Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     func countDownString(from nowDate: Date) -> String {
             let calendar = Calendar(identifier: .gregorian)
@@ -59,6 +54,12 @@ struct HomeView: View {
                           components.hour ?? 00,
                           components.minute ?? 00,
                           components.second ?? 00)
+    }
+    
+    var progress: Int {
+        
+        
+        return 0
     }
     
     private func activeLink() -> Binding<HomeViewsEnum?> {
@@ -227,8 +228,12 @@ struct HomeView: View {
                                 VStack{
                                     HStack {
                                         VStack(alignment: .leading) {
-                                            Text("Próxima reserva en \(countDownString(from:Date()))")
+                                            Text("Próxima reserva en \(countDownString(from:nowDate))")
                                                 .fontWeight(.bold)
+                                                .onReceive(timer) { _ in
+                                                    print(Date())
+                                                    nowDate = Date()
+                                                }
                                             Text("\(viewModel.nextReservation?.date.replacingOccurrences(of: ".", with: "/") ?? "null") \(viewModel.nextReservation?.getName() ?? "error")")
                                         }
                                         .foregroundColor(.black)
