@@ -102,6 +102,8 @@ struct SettingsView: View {
                 }
             }
         }
+        .ignoresSafeArea()
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

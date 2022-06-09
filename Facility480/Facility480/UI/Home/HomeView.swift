@@ -41,8 +41,13 @@ struct HomeView: View {
         let stringDate = viewModel.nextReservation?.date.replacingOccurrences(of: ".", with: "/") ?? "01/01/2024"
         return dateFormatter.date(from: stringDate)!
     }
-    var timer =  Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+//    var timer: Timer {
+//        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
+//            self.nowDate = Date()
+//        }
+//    }
+
     func countDownString(from nowDate: Date) -> String {
             let calendar = Calendar(identifier: .gregorian)
             let components = calendar
@@ -222,12 +227,9 @@ struct HomeView: View {
                                 VStack{
                                     HStack {
                                         VStack(alignment: .leading) {
-                                            Text("Próxima reserva en \(countDownString(from:nowDate))")
+                                            Text("Próxima reserva en \(countDownString(from:Date()))")
                                                 .fontWeight(.bold)
-                                                .onReceive(timer) { _ in
-//                                                    print(Date())
-                                                    nowDate = Date()
-                                                }
+
                                             Text("\(viewModel.nextReservation?.date.replacingOccurrences(of: ".", with: "/") ?? "null") \(viewModel.nextReservation?.getName() ?? "error")")
                                         }
                                         .foregroundColor(.black)
@@ -285,6 +287,7 @@ struct HomeView: View {
                 .onAppear(){
                     reloadReservations()
                 }
+
                 .toolbar{
                     ToolbarItemGroup(placement: ToolbarItemPlacement.navigationBarLeading){
                         Image("480logohome")
